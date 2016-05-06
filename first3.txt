@@ -1,0 +1,303 @@
+********* page 3 ************
+David Copperfield	Charles Dickens	 3.95	146,959 ratings
+The Neverending Story	Michael Ende	 4.17	109,252 ratings
+Shōgun (Asian Saga, #3)	James Clavell	 4.35	101,502 ratings
+Spirit Bound (Vampire Academy, #5)	Richelle Mead	 4.38	218,209 ratings
+Thirteen Reasons Why	Jay Asher	 4.05	447,605 ratings
+Schindler's List	Thomas Keneally	 4.34	106,747 ratings
+The Maze Runner (Maze Runner, #1)	James Dashner	 4.03	601,315 ratings
+Harry Potter and the Half-Blood Prince (Harry Potter, #6)	J.K. Rowling	 4.51	1,536,437 ratings
+His Dark Materials (His Dark Materials #1-3)	Philip Pullman	 4.24	93,272 ratings
+The Sun Also Rises	Ernest Hemingway	 3.83	269,508 ratings
+A Storm of Swords (A Song of Ice and Fire, #3)	George R.R. Martin	 4.54	453,467 ratings
+Clockwork Princess (The Infernal Devices, #3)	Cassandra Clare	 4.58	204,439 ratings
+A Confederacy of Dunces	John Kennedy Toole	 3.88	165,376 ratings
+A Little Princess	Frances Hodgson Burnett	 4.20	179,376 ratings
+Beloved	Toni Morrison	 3.74	217,870 ratings
+Cat's Cradle	Kurt Vonnegut	 4.18	241,223 ratings
+She's Come Undone	Wally Lamb	 3.82	243,706 ratings
+Shiver (The Wolves of Mercy Falls, #1)	Maggie Stiefvater	 3.78	335,403 ratings
+The Crucible	Arthur Miller	 3.53	223,063 ratings
+The Velveteen Rabbit	Margery Williams	 4.28	170,357 ratings
+Girl With a Pearl Earring	Tracy Chevalier	 3.83	428,171 ratings
+The Hiding Place	Corrie ten Boom	 4.41	150,379 ratings
+Marley and Me: Life and Love With the World's Worst Dog	John Grogan	 4.10	330,723 ratings
+Uglies (Uglies, #1)	Scott Westerfeld	 3.86	409,984 ratings
+Marked (House of Night, #1)	P.C. Cast	 3.78	335,950 ratings
+The Silmarillion	J.R.R. Tolkien	 3.85	138,876 ratings
+Jurassic Park	Michael Crichton	 3.93	579,105 ratings
+The Wind in the Willows	Kenneth Grahame	 3.96	120,455 ratings
+The God of Small Things	Arundhati Roy	 3.90	159,729 ratings
+The Boy in the Striped Pajamas	John Boyne	 4.08	259,580 ratings
+Midnight Sun (Twilight, #1.5)	Stephenie Meyer	 4.04	133,616 ratings
+A Light in the Attic	Shel Silverstein	 4.34	267,018 ratings
+The Screwtape Letters	C.S. Lewis	 4.20	206,596 ratings
+Murder on the Orient Express (Hercule Poirot, #10)	Agatha Christie	 4.13	133,728 ratings
+The Silence of the Lambs  (Hannibal Lecter, #2)	Thomas Harris	 4.11	330,130 ratings
+The Trial	Franz Kafka	 3.98	129,617 ratings
+Ella Enchanted	Gail Carson Levine	 3.96	312,956 ratings
+The Secret Magdalene	Ki Longfellow	 4.20	2,847 ratings
+Fear and Loathing in Las Vegas	Hunter S. Thompson	 4.08	205,705 ratings
+City of Fallen Angels (The Mortal Instruments, #4)	Cassandra Clare	 4.16	317,610 ratings
+The Sound and the Fury	William Faulkner	 3.85	120,124 ratings
+The Phantom of the Opera	Gaston Leroux	 3.97	135,574 ratings
+Harry Potter and the Chamber of Secrets (Harry Potter, #2)	J.K. Rowling	 4.34	1,608,648 ratings
+The Lost Hero (The Heroes of Olympus, #1)	Rick Riordan	 4.35	430,578 ratings
+The Iliad/The Odyssey	Homer	 4.02	43,975 ratings
+Clockwork Prince (The Infernal Devices, #2)	Cassandra Clare	 4.48	257,446 ratings
+The Wind-Up Bird Chronicle	Haruki Murakami	 4.17	136,081 ratings
+Man's Search for Meaning	Viktor E. Frankl	 4.32	141,099 ratings
+The Shack	Wm. Paul Young	 3.70	368,968 ratings
+Roots: The Saga of an American Family	Alex Haley	 4.41	110,523 ratings
+Island of the Blue Dolphins (Island of the Blue Dolphins, #1)	Scott O'Dell	 3.78	226,077 ratings
+I Know This Much Is True	Wally Lamb	 4.16	235,125 ratings
+Blindness	José Saramago	 4.05	112,341 ratings
+Stranger in a Strange Land	Robert A. Heinlein	 3.89	206,494 ratings
+For Whom the Bell Tolls	Ernest Hemingway	 3.94	183,539 ratings
+Delirium (Delirium, #1)	Lauren Oliver	 4.01	309,500 ratings
+White Oleander	Janet Fitch	 3.91	225,842 ratings
+The Guernsey Literary and Potato Peel Pie Society	Mary Ann Shaffer	 4.11	377,268 ratings
+The Once and Future King (The Once and Future King #1-4)	T.H. White	 4.07	76,883 ratings
+Lamb: The Gospel According to Biff, Christ's Childhood Pal	Christopher Moore	 4.27	113,723 ratings
+Beautiful Disaster (Beautiful, #1)	Jamie McGuire	 4.17	386,516 ratings
+The Complete Calvin and Hobbes	Bill Watterson	 4.81	27,410 ratings
+The Vampire Lestat (The Vampire Chronicles, #2)	Anne Rice	 4.04	138,134 ratings
+The House of the Spirits	Isabel Allende	 4.18	124,073 ratings
+The Night Circus	Erin Morgenstern	 4.02	390,687 ratings
+Othello	William Shakespeare	 3.87	231,559 ratings
+The Historian	Elizabeth Kostova	 3.75	188,322 ratings
+A Clash of Kings  (A Song of Ice and Fire, #2)	George R.R. Martin	 4.39	521,469 ratings
+King Lear	William Shakespeare	 3.89	132,298 ratings
+Into the Wild	Jon Krakauer	 3.92	563,212 ratings
+The Girl Who Kicked the Hornet's Nest (Millennium, #3)	Stieg Larsson	 4.19	465,420 ratings
+The Thirteenth Tale	Diane Setterfield	 3.94	206,873 ratings
+James and the Giant Peach	Roald Dahl	 3.97	252,682 ratings
+The Idiot	Fyodor Dostoyevsky	 4.17	77,643 ratings
+Uncle Tom's Cabin	Harriet Beecher Stowe	 3.81	137,868 ratings
+The Selection (The Selection, #1)	Kiera Cass	 4.16	371,078 ratings
+Leaves of Grass	Walt Whitman	 4.13	60,336 ratings
+All Creatures Great and Small	James Herriot	 4.30	92,061 ratings
+Invisible Man	Ralph Ellison	 3.82	112,813 ratings
+Speak	Laurie Halse Anderson	 3.98	327,100 ratings
+Misery	Stephen King	 4.07	299,042 ratings
+Paradise Lost	John Milton	 3.79	94,413 ratings
+The Cider House Rules	John Irving	 4.09	121,492 ratings
+The Green Mile	Stephen King	 4.40	167,103 ratings
+Where the Red Fern Grows	Wilson Rawls	 4.03	255,430 ratings
+Different Seasons	Stephen King	 4.32	121,237 ratings
+Paper Towns	John Green	 3.93	572,456 ratings
+Candide	Voltaire	 3.75	149,038 ratings
+The Hobbit	J.R.R. Tolkien	 4.23	1,914,480 ratings
+Neverwhere	Neil Gaiman	 4.17	247,824 ratings
+Graceling (Graceling Realm, #1)	Kristin Cashore	 4.10	261,425 ratings
+The Complete Works	William Shakespeare	 4.49	44,388 ratings
+The Things They Carried	Tim O'Brien	 4.11	147,360 ratings
+Walden	Henry David Thoreau	 3.79	104,930 ratings
+The Awakening	Kate Chopin	 3.61	117,949 ratings
+Inkheart (Inkworld, #1)	Cornelia Funke	 3.85	277,870 ratings
+Sophie's Choice	William Styron	 4.18	64,695 ratings
+The Prince of Tides	Pat Conroy	 4.21	149,147 ratings
+Heidi (Heidi, #1)	Johanna Spyri	 3.96	143,846 ratings
+Are You There God? It's Me, Margaret	Judy Blume	 3.88	148,695 ratings
+********* page 2 ************
+Harry Potter and the Sorcerer's Stone (Harry Potter, #1)	J.K. Rowling	 4.42	3,865,660 ratings
+Middlesex	Jeffrey Eugenides	 3.96	464,284 ratings
+Clockwork Angel (The Infernal Devices, #1)	Cassandra Clare	 4.33	432,911 ratings
+Great Expectations	Charles Dickens	 3.73	445,521 ratings
+On the Road	Jack Kerouac	 3.65	249,210 ratings
+The Adventures of Tom Sawyer	Mark Twain	 3.88	527,565 ratings
+The Stranger	Albert Camus	 3.94	403,702 ratings
+Charlie and the Chocolate Factory (Charlie Bucket, #1)	Roald Dahl	 4.10	458,329 ratings
+The Master and Margarita	Mikhail Bulgakov	 4.33	127,426 ratings
+The Very Hungry Caterpillar	Eric Carle	 4.28	263,305 ratings
+Tuesdays with Morrie	Mitch Albom	 4.03	488,868 ratings
+Eragon (The Inheritance Cycle, #1)	Christopher Paolini	 3.83	973,495 ratings
+The Shining (The Shining, #1)	Stephen King	 4.14	712,540 ratings
+The Unbearable Lightness of Being	Milan Kundera	 4.07	212,447 ratings
+The Scarlet Letter	Nathaniel Hawthorne	 3.35	496,157 ratings
+The Curious Incident of the Dog in the Night-Time	Mark Haddon	 3.84	831,307 ratings
+Hush, Hush (Hush, Hush, #1)	Becca Fitzpatrick	 4.01	402,216 ratings
+The Shadow of the Wind (The Cemetery of Forgotten Books,  #1)	Carlos Ruiz Zafón	 4.23	276,062 ratings
+The Five People You Meet in Heaven	Mitch Albom	 3.89	439,087 ratings
+Flowers for Algernon	Daniel Keyes	 4.03	279,236 ratings
+The Name of the Rose	Umberto Eco	 4.09	189,117 ratings
+And Then There Were None	Agatha Christie	 4.21	354,437 ratings
+Looking for Alaska	John Green	 4.12	700,735 ratings
+The Metamorphosis	Franz Kafka	 3.76	335,537 ratings
+Lonesome Dove	Larry McMurtry	 4.46	104,682 ratings
+In Cold Blood	Truman Capote	 4.04	369,991 ratings
+The Godfather	Mario Puzo	 4.35	242,093 ratings
+Fight Club	Chuck Palahniuk	 4.19	340,648 ratings
+The Cat in the Hat	Dr. Seuss	 4.14	298,519 ratings
+The Compleat Works of Wllm Shkspr	Reduced Shakespeare Company	 4.47	6,294 ratings
+Harry Potter and the Deathly Hallows (Harry Potter, #7)	J.K. Rowling	 4.59	1,580,819 ratings
+The Little House Collection (Little House, #1-9)	Laura Ingalls Wilder	 4.32	121,986 ratings
+Shadow Kiss (Vampire Academy, #3)	Richelle Mead	 4.40	240,756 ratings
+The Name of the Wind (The Kingkiller Chronicle, #1)	Patrick Rothfuss	 4.55	338,126 ratings
+Watchmen	Alan Moore	 4.33	355,004 ratings
+The Divine Comedy	Dante Alighieri	 4.05	78,040 ratings
+Holes (Holes, #1)	Louis Sachar	 3.92	659,857 ratings
+A Walk to Remember	Nicholas Sparks	 4.14	502,997 ratings
+Peter Pan	J.M. Barrie	 4.10	175,222 ratings
+All Quiet on the Western Front	Erich Maria Remarque	 3.89	215,812 ratings
+Insurgent (Divergent, #2)	Veronica Roth	 4.10	837,647 ratings
+Perfume: The Story of a Murderer	Patrick Süskind	 3.98	187,795 ratings
+The Thorn Birds	Colleen McCullough	 4.20	241,215 ratings
+American Gods	Neil Gaiman	 4.10	407,725 ratings
+Love in the Time of Cholera	Gabriel Garcí­a Márquez	 3.88	292,062 ratings
+Frostbite (Vampire Academy, #2)	Richelle Mead	 4.30	248,075 ratings
+1984	George Orwell	 4.12	1,746,592 ratings
+Their Eyes Were Watching God	Zora Neale Hurston	 3.85	174,284 ratings
+The Last Olympian (Percy Jackson and the Olympians, #5)	Rick Riordan	 4.49	431,788 ratings
+Eat, Pray, Love	Elizabeth Gilbert	 3.48	1,076,146 ratings
+Goodnight Moon	Margaret Wise Brown	 4.26	236,055 ratings
+How the Grinch Stole Christmas!	Dr. Seuss	 4.35	226,536 ratings
+Blood Promise (Vampire Academy, #4)	Richelle Mead	 4.36	224,966 ratings
+The Importance of Being Earnest	Oscar Wilde	 4.16	197,773 ratings
+It	Stephen King	 4.14	384,226 ratings
+Atonement	Ian McEwan	 3.86	332,517 ratings
+The Good Earth (House of Earth, #1)	Pearl S. Buck	 3.96	177,422 ratings
+The Ultimate Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy #1-5)	Douglas Adams	 4.36	219,632 ratings
+The Lorax	Dr. Seuss	 4.35	205,869 ratings
+The Wonderful Wizard of Oz (Oz, #1)	L. Frank Baum	 3.97	247,203 ratings
+The Lion, the Witch, and the Wardrobe (Chronicles of Narnia, #1)	C.S. Lewis	 4.17	1,316,105 ratings
+The Three Musketeers	Alexandre Dumas	 4.05	199,011 ratings
+Where the Red Fern Grows	Wilson Rawls	 4.03	255,430 ratings
+The Mists of Avalon (Avalon, #1)	Marion Zimmer Bradley	 4.11	149,215 ratings
+Tess of the D'Urbervilles	Thomas Hardy	 3.74	161,687 ratings
+A Midsummer Night's Dream	William Shakespeare	 3.94	316,040 ratings
+The Prophet	Kahlil Gibran	 4.22	141,833 ratings
+The Joy Luck Club	Amy Tan	 3.88	493,385 ratings
+Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)	J.K. Rowling	 4.50	1,672,611 ratings
+Heart of Darkness	Joseph Conrad	 3.40	262,437 ratings
+Jonathan Livingston Seagull	Richard Bach	 3.78	131,021 ratings
+The Count of Monte Cristo	Alexandre Dumas	 4.19	535,331 ratings
+The Phantom Tollbooth	Norton Juster	 4.22	164,147 ratings
+Good Omens: The Nice and Accurate Prophecies of Agnes Nutter, Witch	Terry Pratchett	 4.26	276,729 ratings
+Madame Bovary	Gustave Flaubert	 3.63	157,346 ratings
+The Call of the Wild	Jack London	 3.81	216,729 ratings
+The Battle of the Labyrinth (Percy Jackson and the Olympians, #4)	Rick Riordan	 4.37	470,970 ratings
+Fifty Shades of Grey (Fifty Shades, #1)	E.L. James	 3.68	1,305,766 ratings
+The Canterbury Tales	Geoffrey Chaucer	 3.47	144,368 ratings
+Alice in Wonderland (Alice's Adventures in Wonderland, #1)	Lewis Carroll	 4.01	343,892 ratings
+The Girl Who Played with Fire (Millennium, #2)	Stieg Larsson	 4.21	559,051 ratings
+Bridge to Terabithia	Katherine Paterson	 3.96	315,451 ratings
+The Clan of the Cave Bear (Earth's Children, #1)	Jean M. Auel	really liked it 4.00	173,176 ratings
+Oh, The Places You'll Go!	Dr. Seuss	 4.33	227,085 ratings
+The Elephant Tree	R.D. Ronald	 3.64	14,227 ratings
+A Farewell to Arms	Ernest Hemingway	 3.78	185,034 ratings
+The Sea of Monsters (Percy Jackson and the Olympians, #2)	Rick Riordan	 4.22	473,983 ratings
+Ulysses	James Joyce	 3.73	75,240 ratings
+Oliver Twist	Charles Dickens	 3.83	220,648 ratings
+The World According to Garp	John Irving	 4.06	164,669 ratings
+Wicked: The Life and Times of the Wicked Witch of the West (The Wicked Years, #1)	Gregory Maguire	 3.50	488,939 ratings
+Harry Potter and the Goblet of Fire (Harry Potter, #4)	J.K. Rowling	 4.50	1,592,827 ratings
+The Zombie Room	R.D. Ronald	 3.71	16,072 ratings
+The Titan's Curse (Percy Jackson and the Olympians, #3)	Rick Riordan	 4.32	388,720 ratings
+The Other Boleyn Girl (The Tudor Court, #2)	Philippa Gregory	 4.03	370,780 ratings
+Last Sacrifice (Vampire Academy, #6)	Richelle Mead	 4.46	186,317 ratings
+The Hunger Games Trilogy Boxset (The Hunger Games, #1-3)	Suzanne Collins	 4.50	142,804 ratings
+Fallen (Fallen, #1)	Lauren Kate	 3.74	361,827 ratings
+Treasure Island	Robert Louis Stevenson	 3.81	274,138 ratings
+Extremely Loud and Incredibly Close	Jonathan Safran Foer	 3.96	281,715 ratings
+********* page 1 ************
+The Hunger Games (The Hunger Games, #1)	Suzanne Collins	 4.36	4,172,300 ratings
+Harry Potter and the Order of the Phoenix (Harry Potter, #5)	J.K. Rowling	 4.44	1,610,982 ratings
+To Kill a Mockingbird	Harper Lee	 4.24	2,826,531 ratings
+Pride and Prejudice	Jane Austen	 4.24	1,852,123 ratings
+Twilight (Twilight, #1)	Stephenie Meyer	 3.56	3,401,793 ratings
+The Chronicles of Narnia (Chronicles of Narnia, #1-7)	C.S. Lewis	 4.23	362,522 ratings
+Animal Farm	George Orwell	 3.84	1,729,804 ratings
+Gone with the Wind	Margaret Mitchell	 4.27	801,314 ratings
+The Book Thief	Markus Zusak	 4.35	1,035,452 ratings
+The Giving Tree	Shel Silverstein	 4.37	613,009 ratings
+The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1)	Douglas Adams	 4.19	916,664 ratings
+The Fault in Our Stars	John Green	 4.31	1,946,501 ratings
+J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings	J.R.R. Tolkien	 4.59	86,247 ratings
+Wuthering Heights	Emily Brontë	 3.80	843,438 ratings
+The Da Vinci Code (Robert Langdon, #2)	Dan Brown	 3.76	1,419,831 ratings
+Memoirs of a Geisha	Arthur Golden	 4.06	1,282,916 ratings
+Alice's Adventures in Wonderland & Through the Looking-Glass	Lewis Carroll	 4.06	347,977 ratings
+Romeo and Juliet	William Shakespeare	 3.73	1,484,678 ratings
+Les Misérables	Victor Hugo	 4.12	505,755 ratings
+Divergent (Divergent, #1)	Veronica Roth	 4.28	1,811,785 ratings
+The Picture of Dorian Gray	Oscar Wilde	 4.04	561,550 ratings
+Lord of the Flies	William Golding	 3.62	1,457,949 ratings
+Ender's Game (The Ender Quintet, #1)	Orson Scott Card	 4.29	759,087 ratings
+The Alchemist	Paulo Coelho	 3.79	1,139,018 ratings
+The Time Traveler's Wife	Audrey Niffenegger	 3.94	1,170,399 ratings
+Crime and Punishment	Fyodor Dostoyevsky	 4.16	378,173 ratings
+Jane Eyre	Charlotte Brontë	 4.09	1,141,257 ratings
+Charlotte's Web	E.B. White	 4.13	910,129 ratings
+City of Bones (The Mortal Instruments, #1)	Cassandra Clare	 4.12	1,054,053 ratings
+Anne of Green Gables (Anne of Green Gables, #1)	L.M. Montgomery	 4.21	488,203 ratings
+The Help	Kathryn Stockett	 4.45	1,356,906 ratings
+Of Mice and Men	John Steinbeck	 3.82	1,339,039 ratings
+The Perks of Being a Wallflower	Stephen Chbosky	 4.20	818,087 ratings
+Dracula	Bram Stoker	 3.96	578,346 ratings
+The Princess Bride	William Goldman	 4.25	579,076 ratings
+Brave New World	Aldous Huxley	 3.95	928,537 ratings
+One Hundred Years of Solitude	Gabriel Garcí­a Márquez	 4.02	509,546 ratings
+A Wrinkle in Time (A Wrinkle in Time Quintet, #1)	Madeleine L'Engle	 4.04	557,504 ratings
+The Great Gatsby	F. Scott Fitzgerald	 3.87	2,424,253 ratings
+The Secret Garden	Frances Hodgson Burnett	 4.11	600,514 ratings
+A Thousand Splendid Suns	Khaled Hosseini	 4.32	741,610 ratings
+The Lovely Bones	Alice Sebold	 3.75	1,479,111 ratings
+Where the Wild Things Are	Maurice Sendak	 4.22	554,574 ratings
+The Adventures of Huckleberry Finn	Mark Twain	 3.79	910,411 ratings
+Green Eggs and Ham	Dr. Seuss	 4.29	437,169 ratings
+The Catcher in the Rye	J.D. Salinger	 3.78	1,853,889 ratings
+Water for Elephants	Sara Gruen	 4.06	1,000,529 ratings
+Life of Pi	Yann Martel	 3.87	950,545 ratings
+A Tale of Two Cities	Charles Dickens	 3.79	610,221 ratings
+Fahrenheit 451	Ray Bradbury	 3.96	1,007,734 ratings
+The Odyssey	Homer	 3.71	649,408 ratings
+The Little Prince	Antoine de Saint-Exupéry	 4.26	648,711 ratings
+The Outsiders	S.E. Hinton	 4.04	586,763 ratings
+Lolita	Vladimir Nabokov	 3.87	459,883 ratings
+A Game of Thrones (A Song of Ice and Fire, #1)	George R.R. Martin	 4.44	1,173,637 ratings
+Slaughterhouse-Five	Kurt Vonnegut	 4.04	781,976 ratings
+The Lightning Thief (Percy Jackson and the Olympians, #1)	Rick Riordan	 4.21	1,170,647 ratings
+Catch-22	Joseph Heller	 3.97	505,272 ratings
+The Pillars of the Earth  (The Pillars of the Earth, #1)	Ken Follett	 4.28	432,822 ratings
+Dune (Dune Chronicles, #1)	Frank Herbert	 4.17	456,452 ratings
+The Stand	Stephen King	 4.33	405,321 ratings
+Frankenstein	Mary Shelley	 3.73	775,474 ratings
+Watership Down	Richard Adams	 4.04	275,509 ratings
+My Sister's Keeper	Jodi Picoult	 4.05	796,543 ratings
+The Adventures of Sherlock Holmes (Sherlock Holmes, #3)	Arthur Conan Doyle	 4.29	155,427 ratings
+One Flew Over the Cuckoo's Nest	Ken Kesey	 4.18	462,477 ratings
+The Kite Runner	Khaled Hosseini	 4.23	1,622,969 ratings
+The Bell Jar	Sylvia Plath	 3.97	396,004 ratings
+The Handmaid's Tale	Margaret Atwood	really liked it 4.00	479,501 ratings
+A Tree Grows in Brooklyn	Betty  Smith	 4.23	280,540 ratings
+The Giver (The Giver, #1)	Lois Lowry	 4.12	1,236,196 ratings
+Rebecca	Daphne du Maurier	 4.19	285,275 ratings
+Angela's Ashes (Frank McCourt, #1)	Frank McCourt	 4.06	376,292 ratings
+Anna Karenina	Leo Tolstoy	really liked it 4.00	404,039 ratings
+Outlander (Outlander, #1)	Diana Gabaldon	 4.18	460,730 ratings
+The Road	Cormac McCarthy	 3.94	502,849 ratings
+The Color Purple	Alice Walker	 4.15	369,825 ratings
+A Clockwork Orange	Anthony Burgess	 3.97	406,956 ratings
+The Girl with the Dragon Tattoo (Millennium, #1)	Stieg Larsson	 4.09	1,634,585 ratings
+The Brothers Karamazov	Fyodor Dostoyevsky	 4.29	154,511 ratings
+The Poisonwood Bible	Barbara Kingsolver	 4.01	517,160 ratings
+Vampire Academy (Vampire Academy, #1)	Richelle Mead	 4.15	399,837 ratings
+Little Women (Little Women, #1)	Louisa May Alcott	 4.02	1,158,500 ratings
+Matilda	Roald Dahl	 4.27	404,174 ratings
+Atlas Shrugged	Ayn Rand	 3.67	264,205 ratings
+Siddhartha	Hermann Hesse	 3.97	357,454 ratings
+The Fellowship of the Ring (The Lord of the Rings, #1)	J.R.R. Tolkien	 4.32	1,556,191 ratings
+Don Quixote	Miguel de Cervantes Saavedra	 3.84	140,628 ratings
+Fahrenheit 451	Ray Bradbury	 3.96	1,007,734 ratings
+The Notebook (The Notebook, #1)	Nicholas Sparks	 4.05	991,991 ratings
+The Golden Compass (His Dark Materials, #1)	Philip Pullman	 3.91	871,205 ratings
+A Prayer for Owen Meany	John Irving	 4.22	224,575 ratings
+The Old Man and the Sea	Ernest Hemingway	 3.69	462,744 ratings
+Great Expectations	Charles Dickens	 3.73	445,521 ratings
+Moby-Dick; or, The Whale	Herman Melville	 3.44	361,216 ratings
+The Complete Stories and Poems	Edgar Allan Poe	 4.37	161,530 ratings
+Interview with the Vampire (The Vampire Chronicles, #1)	Anne Rice	 3.97	368,650 ratings
+The Red Tent	Anita Diamant	 4.15	413,829 ratings
+Winnie-the-Pooh (Winnie-the-Pooh, #1)	A.A. Milne	 4.33	196,273 ratings
+The Secret Life of Bees	Sue Monk Kidd	 3.99	840,955 ratings
