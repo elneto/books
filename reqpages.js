@@ -54,7 +54,7 @@ setTimeout(function(){
           var rand=getRandomArbitrary(1000,maxtime);
           setTimeout(function() {
               console.error('******** Retrying '+title+' in '+rand+ ' secs');
-              doRequest(url);
+              doRequest(url, title);
           }, rand);
           //return;
         }
