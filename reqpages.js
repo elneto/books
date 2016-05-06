@@ -3,7 +3,7 @@ var arrfile = require('./arr-title-au.js');
 var fs = require("fs");
 
 //console.log(arrfile.getArr);
-var maxtime = 9999000; //up to 9000000 2.5 hrs to not flood of requests
+var mintime = 0, maxtime = 4335500; //up to 9999000 2.5 hrs to not flood of requests
 // Returns a random number between min (inclusive) and max (exclusive)
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -21,7 +21,7 @@ setTimeout(function(){
   //for (var i=0;i<=10000;i++){ //for testing
   for (var i in arr){
     //console.log("title: " + arr[i]["title"] + " author: " + arr[i]["author"]);
-    rand=getRandomArbitrary(1000,maxtime); 
+    rand=getRandomArbitrary(mintime,maxtime); 
       
       var author = arr[i]["author"];
       author = encodeURIComponent(author); //appropriate for url
@@ -40,7 +40,7 @@ setTimeout(function(){
       }
     
       //rand = getRandomArbitrary(30,500);
-      console.log("calling in random " + rand + " milisecs. "+title);
+      console.log("calling in random " + rand/1000/60 + " mins "+title);
       var url = 'http://openlibrary.org/search.json?title='+title+'&author='+author;
       doRequest(url, title);
     
@@ -51,9 +51,9 @@ setTimeout(function(){
         if (err) {
           console.error("******** error in title " + title + " **********")
           console.error(err);
-          var rand=getRandomArbitrary(1000,maxtime);
+          var rand=getRandomArbitrary(mintime,maxtime);
           setTimeout(function() {
-              console.error('******** Retrying '+title+' in '+rand+ ' secs');
+              console.error('******** Retrying '+title+' in '+rand/1000/60+ ' mins');
               doRequest(url, title);
           }, rand);
           //return;
@@ -85,13 +85,19 @@ setTimeout(function(){
                     if (typeof det.authors !== "undefined")
                       author = det.authors[0].name;
 
-                    var line = det.title +"\t"+ author +"\t"+isbn0 +"\t"+det.number_of_pages+"\t"+det.publish_date;
+                    var thumb = 0;
+                    if (typeof respu2['OCLC:'+isbn0].thumbnail_url !== "undefined")
+                      thumb = respu2['OCLC:'+isbn0].thumbnail_url;
+
+                    var line = det.title +"\t"+ author +"\t"+isbn0 +"\t"+det.number_of_pages+"\t"+det.publish_date+"\t"+thumb;
                     console.log(line);
                     fs.appendFile('books_so_far.txt', line+"\n", function (err) {
                         if (err){
                           console.error("err writing in file");
                           return;
                         }
+                        maxtime -= 100; //reduces wait
+                        console.log("****** maxtimte: " + maxtime/1000/60 + " mins");
                       });
                   }
                   
