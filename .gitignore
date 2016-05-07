@@ -3,6 +3,9 @@ logs
 *.log
 npm-debug.log*
 
+# txt downloaded, provisionally out
+books_so_far.txt
+
 # Runtime data
 pids
 *.pid
