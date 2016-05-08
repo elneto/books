@@ -2,6 +2,10 @@
 <meta charset="utf-8">
 <style>
 
+*{
+  font-size: 10px;
+}
+
 .circle {
   fill: steelblue;
   /*stroke:white;*/
@@ -22,8 +26,53 @@
   shape-rendering: crispEdges;
 }
 
+#tooltip
+  {
+  position: absolute;
+  z-index: 10;
+  visibility: hidden;
+  border: 1px solid #aaa;
+  background-color:#fff;
+  /*opacity: 0.9;*/
+  padding: 0.5em;
+  width:23em;
+  }
+
+#tooltip > *{
+  float: left;
+}
+
+#tt-img{
+  margin-right: 0.5em;
+}
+
+#tt-text{
+  font-family: "Merriweather", "Georgia", serif;
+  width: 17em;
+}
+
+#tt-title{
+  font-size: 120%;
+  font-weight: bold;
+}
+
+#tt-author, #tt-ratings{
+  clear: left;
+}
+
 </style>
 <body>
+
+<!-- A tool tip -->
+<div id="tooltip"> 
+    <img id="tt-img" src="https://d.gr-assets.com/books/1345060082s/19380.jpg"> 
+    <div id="tt-text">
+      <div id="tt-title"></div>
+      <div id="tt-author"></div>
+      <div id="tt-ratings"></div>
+    </div>
+</div>
+
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
@@ -51,6 +100,8 @@ var svg = d3.select("body").append("svg")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var tt = d3.select("#tooltip");
 
 d3.tsv("bbever.tsv", type, function(error, data) {
   if (error) throw error;
@@ -80,10 +131,21 @@ d3.tsv("bbever.tsv", type, function(error, data) {
       .attr("cx", function(d) { return x(d.ratings); })
       .attr("r", 3)
       .attr("cy", function(d) { return y(d.avg_rating); })
-    .append("svg:title")
+      .on("mouseover", function(d){
+        d3.select("#tt-title").text(d.title);
+        d3.select("#tt-author").text(d.author);
+        d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
+        tt.style("top", event.pageY+"px").style("left",event.pageX+"px");
+        tt.style("visibility", "visible");
+        return 0;
+      })
+      .on("mouseout", function(d){
+        //return tt.style("visibility", "hidden");
+      });
+    /*.append("svg:title")
       .text(function(d) { return d.title 
                           +"\n"+d.author
-                          +"\n"+d.avg_rating + " from " +d.ratings+ " reviews"; });
+                          +"\n"+d.avg_rating + " from " +d.ratings+ " reviews"; });*/
 });
 
 function type(d) {
