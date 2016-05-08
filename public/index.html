@@ -1,66 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
-
-*{
-  font-size: 10px;
-}
-
-.circle {
-  fill: steelblue;
-  /*stroke:white;*/
-}
-
-.circle:hover {
-  fill: brown;
-}
-
-.axis {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-#tooltip
-  {
-  position: absolute;
-  z-index: 10;
-  visibility: hidden;
-  border: 1px solid #aaa;
-  background-color:#fff;
-  /*opacity: 0.9;*/
-  padding: 0.5em;
-  width:23em;
-  }
-
-#tooltip > *{
-  float: left;
-}
-
-#tt-img{
-  margin-right: 0.5em;
-}
-
-#tt-text{
-  font-family: "Merriweather", "Georgia", serif;
-  width: 17em;
-}
-
-#tt-title{
-  font-size: 120%;
-  font-weight: bold;
-}
-
-#tt-author, #tt-ratings{
-  clear: left;
-}
-
-</style>
+<title>Best Books Ever</title>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 <body>
 
 <!-- A tool tip -->
@@ -145,10 +86,6 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       .on("mouseout", function(d){
         //return tt.style("visibility", "hidden");
       });
-    /*.append("svg:title")
-      .text(function(d) { return d.title 
-                          +"\n"+d.author
-                          +"\n"+d.avg_rating + " from " +d.ratings+ " reviews"; });*/
 });
 
 function type(d) {
