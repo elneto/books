@@ -55,7 +55,7 @@ var svg = d3.select("body").append("svg")
 d3.tsv("bbever.tsv", type, function(error, data) {
   if (error) throw error;
 
-  x.domain([3, d3.max(data, function(d) { return d.ratings; })]);
+  x.domain([44000, d3.max(data, function(d) { return d.ratings; })]);
   y.domain([0, 5]);
 
   svg.append("g")
