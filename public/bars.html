@@ -2,11 +2,11 @@
 <meta charset="utf-8">
 <style>
 
-.circle {
+.bar {
   fill: steelblue;
 }
 
-.circle:hover {
+.bar:hover {
   fill: brown;
 }
 
@@ -31,11 +31,11 @@
 <script>
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 1400 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-var x = d3.scale.linear()
-    .range([0, width]);
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
 
 var y = d3.scale.linear()
     .range([height, 0]);
@@ -47,18 +47,19 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .ticks(5);
+    .ticks(10, "%");
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g");
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("bbever100.tsv", type, function(error, data) {
+d3.tsv("data.tsv", type, function(error, data) {
   if (error) throw error;
 
-  x.domain([0, d3.max(data, function(d) { return d.ratings; })]);
-  y.domain([0, d3.max(data, function(d) { return d.avg_rating; })]);
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -73,19 +74,20 @@ d3.tsv("bbever100.tsv", type, function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Avg. Rating");
+      .text("Frequency");
 
-  svg.selectAll(".circle")
+  svg.selectAll(".bar")
       .data(data)
-    .enter().append("circle")
-      .attr("class", "circle")
-      .attr("cx", function(d) { return x(d.ratings); })
-      .attr("r", 5)
-      .attr("cy", function(d) { return y(d.avg_rating); });
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("height", function(d) { return height - y(d.frequency); });
 });
 
 function type(d) {
-  d.ratings = +d.ratings;
+  d.frequency = +d.frequency;
   return d;
 }
 
