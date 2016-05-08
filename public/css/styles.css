@@ -43,13 +43,18 @@
   float: left;
 }
 
+img#closett{
+  float: right;
+  cursor: pointer;
+}
+
 #tt-img{
   margin-right: 0.5em;
 }
 
 #tt-text{
   font-family: "Merriweather", "Georgia", serif;
-  width: 17em;
+  width: 16em;
 }
 
 #tt-title{

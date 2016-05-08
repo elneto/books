@@ -6,6 +6,7 @@
 
 <!-- A tool tip -->
 <div id="tooltip"> 
+    <img src="img/close.gif" id="closett">
     <img id="tt-img" src="https://d.gr-assets.com/books/1345060082s/19380.jpg"> 
     <div id="tt-text">
       <div id="tt-title"></div>
@@ -13,6 +14,7 @@
       <div id="tt-ratings"></div>
       <a href="" id="tt-url" target="_blank">Read more</div>
     </div>
+
 </div>
 
 <script src="//d3js.org/d3.v3.min.js"></script>
@@ -93,6 +95,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       //.on("mouseout", function(d){return tt.style("visibility", "hidden");})
       .on("click",function(d){d3.select(this).style("fill", "red");});
 
+    d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
 
 });
 
