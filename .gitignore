@@ -3,8 +3,8 @@ logs
 *.log
 npm-debug.log*
 
-# txt downloaded, provisionally out
-books_so_far.txt
+# tmp excel
+~$*.*
 
 # Runtime data
 pids
