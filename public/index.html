@@ -4,6 +4,7 @@
 
 .circle {
   fill: steelblue;
+  /*stroke:white;*/
 }
 
 .circle:hover {
@@ -21,10 +22,6 @@
   shape-rendering: crispEdges;
 }
 
-.x.axis path {
-  display: none;
-}
-
 </style>
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
@@ -34,7 +31,7 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 1400 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
-var x = d3.scale.linear()
+var x = d3.scale.log()
     .range([0, width]);
 
 var y = d3.scale.linear()
@@ -52,17 +49,18 @@ var yAxis = d3.svg.axis()
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g");
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("bbever100.tsv", type, function(error, data) {
+d3.tsv("bbever.tsv", type, function(error, data) {
   if (error) throw error;
 
-  x.domain([0, d3.max(data, function(d) { return d.ratings; })]);
-  y.domain([0, d3.max(data, function(d) { return d.avg_rating; })]);
+  x.domain([3, d3.max(data, function(d) { return d.ratings; })]);
+  y.domain([0, 5]);
 
   svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + height/2 + ")")
       .call(xAxis);
 
   svg.append("g")
@@ -80,8 +78,12 @@ d3.tsv("bbever100.tsv", type, function(error, data) {
     .enter().append("circle")
       .attr("class", "circle")
       .attr("cx", function(d) { return x(d.ratings); })
-      .attr("r", 5)
-      .attr("cy", function(d) { return y(d.avg_rating); });
+      .attr("r", 3)
+      .attr("cy", function(d) { return y(d.avg_rating); })
+    .append("svg:title")
+      .text(function(d) { return d.title 
+                          +"\n"+d.author
+                          +"\n"+d.avg_rating + " from " +d.ratings+ " reviews"; });
 });
 
 function type(d) {
