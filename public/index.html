@@ -70,6 +70,7 @@
       <div id="tt-title"></div>
       <div id="tt-author"></div>
       <div id="tt-ratings"></div>
+      <a href="" id="tt-url" target="_blank">Read more</div>
     </div>
 </div>
 
@@ -103,7 +104,7 @@ var svg = d3.select("body").append("svg")
 
 var tt = d3.select("#tooltip");
 
-d3.tsv("bbever.tsv", type, function(error, data) {
+d3.tsv("bbeverpic.tsv", type, function(error, data) {
   if (error) throw error;
 
   x.domain([44000, d3.max(data, function(d) { return d.ratings; })]);
@@ -132,9 +133,11 @@ d3.tsv("bbever.tsv", type, function(error, data) {
       .attr("r", 3)
       .attr("cy", function(d) { return y(d.avg_rating); })
       .on("mouseover", function(d){
+        d3.select("#tt-img").attr("src", "https://d.gr-assets.com/books/"+d.img+".jpg");
         d3.select("#tt-title").text(d.title);
         d3.select("#tt-author").text(d.author);
         d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
+        d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
         tt.style("top", event.pageY+"px").style("left",event.pageX+"px");
         tt.style("visibility", "visible");
         return 0;
