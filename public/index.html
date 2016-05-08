@@ -90,7 +90,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
         d3.select("#tt-author").text(d.author);
         d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
         d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
-        tt.style("top", event.pageY+5+"px").style("left",event.pageX+5+"px");
+        tt.style("top", event.pageY+"px").style("left",event.pageX+"px");
         tt.style("visibility", "visible");
         return 0;
       })
