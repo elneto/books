@@ -59,13 +59,13 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
   var x_max = d3.max(data, function(d) { return d.ratings; });
 
   x.domain([3, x_max]);
-  y.domain([0, 5]);
+  y.domain([2.5, 5]);
 
   svg.call(d3.behavior.zoom().y(y).x(x).scaleExtent([1,Infinity]).on("zoom", zoom));
 
   svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height/2 + ")")
+      .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
   svg.append("g")

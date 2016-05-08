@@ -5,4 +5,4 @@ Work in Progress: http://tuco.co/books/
 
 https://www.goodreads.com/list/show/1.Best_Books_Ever
 
-![Screenshot](/public/img/bbooks-thumb.png?raw=true "Screenshot")
+![Screenshot](/public/img/bbooks2.png?raw=true "Screenshot")
