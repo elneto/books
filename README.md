@@ -1,6 +1,8 @@
 # books
-gets all the greatest books from goodreads and will visualize them in a bubble chart
+Gets all the 43,343 greatest books from a goodreads list and visualize them in a zoomable bubble chart
 
 Work in Progress: http://tuco.co/books/
 
 https://www.goodreads.com/list/show/1.Best_Books_Ever
+
+![Screenshot](/img/bbooks-thumb.jpg?raw=true "Screenshot")
