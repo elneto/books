@@ -53,7 +53,6 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
 
   //x.domain([44000, d3.max(data, function(d) { return d.ratings; })]);
   var x_max = d3.max(data, function(d) { return d.ratings; });
-  console.log(x_max);
 
   x.domain([3, x_max]);
   y.domain([0, 5]);
@@ -107,9 +106,7 @@ function zoom() {
 }
 
 function transform(d) {
-  //console.log(d.avg_rating + " " + x(d.ratings));
-  return "translate(" + x(d.ratings) + "," + y(d.avg_rating) + ")";
-  //return "translate(" + x(d.ratings) + ",0)";
+  return "translate(" + x(d.ratings) + "," + y(d.avg_rating) + ")"; 
 }
 
 </script>
