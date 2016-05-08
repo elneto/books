@@ -6,6 +6,11 @@ body{
   font-family: "Merriweather", "Georgia", serif;
   font-size: 10px;
 }
+
+p{
+  font-size: 1.5em; 
+}
+
 .overlay {
   fill: none;
   pointer-events: all;
