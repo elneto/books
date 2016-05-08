@@ -18,6 +18,8 @@
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
+var circle = "";
+
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 1400 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
@@ -42,14 +44,21 @@ var svg = d3.select("body").append("svg")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
 
 var tt = d3.select("#tooltip");
 
 d3.tsv("bbeverpic.tsv", type, function(error, data) {
   if (error) throw error;
 
-  x.domain([44000, d3.max(data, function(d) { return d.ratings; })]);
+  //x.domain([44000, d3.max(data, function(d) { return d.ratings; })]);
+  var x_max = d3.max(data, function(d) { return d.ratings; });
+  console.log(x_max);
+
+  x.domain([3, x_max]);
   y.domain([0, 5]);
+
+  svg.call(d3.behavior.zoom().y(y).x(x).scaleExtent([1,Infinity]).on("zoom", zoom));
 
   svg.append("g")
       .attr("class", "x axis")
@@ -66,31 +75,41 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       .style("text-anchor", "end")
       .text("Avg. Rating");
 
-  svg.selectAll(".circle")
+  circle = svg.selectAll(".circle")
       .data(data)
     .enter().append("circle")
       .attr("class", "circle")
-      .attr("cx", function(d) { return x(d.ratings); })
-      .attr("r", 3)
-      .attr("cy", function(d) { return y(d.avg_rating); })
+      .attr("r", 2.5)
+      .attr("transform", transform)
       .on("mouseover", function(d){
         d3.select("#tt-img").attr("src", "https://d.gr-assets.com/books/"+d.img+".jpg");
         d3.select("#tt-title").text(d.title);
         d3.select("#tt-author").text(d.author);
         d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
         d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
-        tt.style("top", event.pageY+"px").style("left",event.pageX+"px");
+        tt.style("top", event.pageY+5+"px").style("left",event.pageX+5+"px");
         tt.style("visibility", "visible");
         return 0;
       })
-      .on("mouseout", function(d){
-        //return tt.style("visibility", "hidden");
-      });
+      //.on("mouseout", function(d){return tt.style("visibility", "hidden");})
+      .on("click",function(d){d3.select(this).style("fill", "red");});
+
+
 });
 
 function type(d) {
   d.ratings = +d.ratings;
   return d;
+}
+
+function zoom() {
+  circle.attr("transform", transform);
+}
+
+function transform(d) {
+  //console.log(d.avg_rating + " " + x(d.ratings));
+  return "translate(" + x(d.ratings) + "," + y(d.avg_rating) + ")";
+  //return "translate(" + x(d.ratings) + ",0)";
 }
 
 </script>
