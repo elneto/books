@@ -13,6 +13,7 @@
       <div id="tt-author"></div>
       <div id="tt-ratings"></div>
       <a href="" id="tt-url" target="_blank">Read more</a>
+      <a href="#" id="tt-red">Mark red</a>
     </div>
 
 </div>
@@ -50,7 +51,8 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
 
-var tt = d3.select("#tooltip");
+var tt = d3.select("#tooltip"), 
+    current_circle = null;
 
 d3.tsv("bbeverpic.tsv", type, function(error, data) {
   if (error) throw error;
@@ -92,12 +94,14 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
         d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
         tt.style("top", event.pageY+"px").style("left",event.pageX+"px");
         tt.style("visibility", "visible");
+        current_circle = d3.select(this);
         return 0;
       })
       //.on("mouseout", function(d){return tt.style("visibility", "hidden");})
       .on("click",function(d){d3.select(this).style("fill", "red");});
 
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
+    d3.select("#tt-red").on("click",function(d){return current_circle.style("fill", "red");});
 
 });
 
