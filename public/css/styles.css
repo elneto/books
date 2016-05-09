@@ -19,6 +19,7 @@ p{
 .circle {
   fill: steelblue;
   /*stroke:white;*/
+  cursor: pointer;
 }
 
 .circle:hover {

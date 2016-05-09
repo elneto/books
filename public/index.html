@@ -13,7 +13,7 @@
       <div id="tt-author"></div>
       <div id="tt-ratings"></div>
       <a href="" id="tt-url" target="_blank">Read more</a>
-      <a href="#" id="tt-red">Mark red</a>
+      <a href="#" id="tt-red">Unmark</a>
     </div>
 
 </div>
@@ -51,8 +51,8 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
 
-var tt = d3.select("#tooltip"), 
-    current_circle = null;
+var tt = d3.select("#tooltip");
+    //current_circle = null;
 
 d3.tsv("bbeverpic.tsv", type, function(error, data) {
   if (error) throw error;
@@ -68,7 +68,13 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .call(xAxis)
+    .append("text")
+      .attr("x", width)
+      .attr("y", -16)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Ratings");
 
   svg.append("g")
       .attr("class", "y axis")
@@ -86,7 +92,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       .attr("class", "circle")
       .attr("r", 2.5)
       .attr("transform", transform)
-      .on("mouseover", function(d){
+      .on("click", function(d){
         d3.select("#tt-img").attr("src", "https://d.gr-assets.com/books/"+d.img+".jpg");
         d3.select("#tt-title").text(d.title);
         d3.select("#tt-author").text(d.author);
@@ -94,14 +100,15 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
         d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
         tt.style("top", event.pageY+"px").style("left",event.pageX+"px");
         tt.style("visibility", "visible");
+        d3.select(this).style("fill", "red");
         current_circle = d3.select(this);
         return 0;
-      })
+      });
       //.on("mouseout", function(d){return tt.style("visibility", "hidden");})
-      .on("click",function(d){d3.select(this).style("fill", "red");});
+      //.on("click",function(d){d3.select(this).style("fill", "red");});
 
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
-    d3.select("#tt-red").on("click",function(d){return current_circle.style("fill", "red");});
+    d3.select("#tt-red").on("click",function(d){return current_circle.style("fill", "steelblue");});
 
 });
 
@@ -119,6 +126,10 @@ function transform(d) {
 }
 
 </script>
+
+<p><strong>Click</strong> to see the book's title and more info.</p>
+
+<p>Use the <strong>scroll</strong> to zoom in and out, <strong>drag</strong> to pan.</p>
 
 <p>The X axis is the number of reviews. The Y is the given rating.</p>
 
