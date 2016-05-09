@@ -117,6 +117,12 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
 
 function type(d) {
   d.ratings = +d.ratings;
+  d.avg_rating = +d.avg_rating;
+  //to avoid the log(0) that is NaN
+  if (d.ratings == 0)
+    d.ratings = 0.1;
+  if (d.avg_rating == 0)
+    d.avg_rating = 0.1;
   return d;
 }
 
