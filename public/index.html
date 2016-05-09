@@ -64,7 +64,16 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
   for (var i = 0; i < data.length; i++)
     titleAuthor[i] = data[i].title + " by " + data[i].author;
  
-  
+  function selectSearchBook(term){
+    console.log(term);
+    // var title = term.split(" by ")[0];
+    // console.log(title);
+
+    // var nodes = svg.selectAll(".circle").
+    //             select(function(d,i){
+
+    //             })
+  }
 
   $(function() { //for the autocomplete
     $( "#search" ).autocomplete({
@@ -73,7 +82,11 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
   });
 
   d3.select("#search_button").on("click",function(d){
-    return current_circle.style("fill", "steelblue");
+    // var term = d3.select("#search");
+    // console.log(term);
+    // if (term != "") //todo: do a trim
+    //   return selectSearchBook(term);
+    //return current_circle.style("fill", "red");
   });
   //x.domain([44000, d3.max(data, function(d) { return d.ratings; })]);
   var x_max = d3.max(data, function(d) { return d.ratings; });
