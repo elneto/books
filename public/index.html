@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Best Books Ever</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <body>
 
@@ -19,11 +20,13 @@
 </div>
 
 <h1>Best Books Ever</h1>
-
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
-var circle = "";
+var circle = "",
+    titleAuthor = [];
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 1400 - margin.left - margin.right,
@@ -57,6 +60,21 @@ var tt = d3.select("#tooltip");
 d3.tsv("bbeverpic.tsv", type, function(error, data) {
   if (error) throw error;
 
+  //copy title and author to array
+  for (var i = 0; i < data.length; i++)
+    titleAuthor[i] = data[i].title + " by " + data[i].author;
+ 
+  
+
+  $(function() { //for the autocomplete
+    $( "#search" ).autocomplete({
+      source: titleAuthor
+    });
+  });
+
+  d3.select("#search_button").on("click",function(d){
+    return current_circle.style("fill", "steelblue");
+  });
   //x.domain([44000, d3.max(data, function(d) { return d.ratings; })]);
   var x_max = d3.max(data, function(d) { return d.ratings; });
 
@@ -136,6 +154,7 @@ function transform(d) {
 
 </script>
 
+<div class="col_text">
 <p><strong>Click</strong> to see the book's title and more info.</p>
 
 <p>Use the <strong>scroll</strong> to zoom in and out, <strong>drag</strong> to pan.</p>
@@ -145,6 +164,15 @@ function transform(d) {
 <p>Gets all the 43,343 greatest books from this <a href="https://www.goodreads.com/list/show/1.Best_Books_Ever">goodreads list</a> and visualize them in a zoomable bubble chart.</p>
 
 <p>Source code: <a href="https://github.com/elneto/books">https://github.com/elneto/books</a></p>
+</div>
+<div class="col_text">
+  <p>
+  <div class="ui-widget">
+    <input id="search" size="25">
+    <button id="search_button">Search</button>
+  </div>
+  </p>
+</div>
 
 </body>
 </html>

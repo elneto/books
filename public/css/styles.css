@@ -1,6 +1,3 @@
-*{
-  
-}
 
 body{
   font-family: "Merriweather", "Georgia", serif;
@@ -74,4 +71,8 @@ img#closett{
 
 #tt-author, #tt-ratings{
   clear: left;
+}
+
+.col_text{
+  float: left;
 }
