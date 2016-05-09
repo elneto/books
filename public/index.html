@@ -93,7 +93,10 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       .attr("r", 2.5)
       .attr("transform", transform)
       .on("click", function(d){
-        d3.select("#tt-img").attr("src", "https://d.gr-assets.com/books/"+d.img+".jpg");
+        if (d.img != "0")
+          d3.select("#tt-img").attr("src", "https://d.gr-assets.com/books/"+d.img+".jpg");
+        else
+          d3.select("#tt-img").attr("src", "img/nopic.png");
         d3.select("#tt-title").text(d.title);
         d3.select("#tt-author").text(d.author);
         d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
@@ -131,9 +134,9 @@ function transform(d) {
 
 <p>Use the <strong>scroll</strong> to zoom in and out, <strong>drag</strong> to pan.</p>
 
-<p>The X axis is the number of reviews. The Y is the given rating.</p>
+<p>The X axis is the number of reviews. The Y is the average rating.</p>
 
-<p>Gets all the 43,343 greatest books from a <a href="https://www.goodreads.com/list/show/1.Best_Books_Ever">goodreads list</a> and visualize them in a zoomable bubble chart.</p>
+<p>Gets all the 43,343 greatest books from this <a href="https://www.goodreads.com/list/show/1.Best_Books_Ever">goodreads list</a> and visualize them in a zoomable bubble chart.</p>
 
 <p>Source code: <a href="https://github.com/elneto/books">https://github.com/elneto/books</a></p>
 
