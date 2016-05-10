@@ -26,7 +26,9 @@
 <script>
 
 var circle = "",
-    titleAuthor = [];
+    titleAuthor = [],
+    authors = [],
+    uauthors = [];
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 1400 - margin.left - margin.right,
@@ -61,8 +63,14 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
   if (error) throw error;
 
   //copy title and author to array
-  for (var i = 0; i < data.length; i++)
+  for (var i = 0; i < data.length; i++){
     titleAuthor[i] = data[i].title + " by " + data[i].author;
+    authors[i] = data[i].author;
+  }
+  //removes duplicates
+  $.each(authors, function(i, el){
+    if($.inArray(el, uauthors) === -1) uauthors.push(el);
+  });   
  
   //marks in red the book (title by author) given in term 
   function selectSearchBook(term){
@@ -100,6 +108,9 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
   $(function() { //for the autocomplete
     $( "#search" ).autocomplete({
       source: titleAuthor
+    });
+    $( "#search_author" ).autocomplete({
+      source: uauthors
     });
   });
 
@@ -185,8 +196,16 @@ function transform(d) {
 <div class="col_text">
   <p>
   <div class="ui-widget">
-    <input id="search" size="40">
+    <input id="search" size="40" placeholder="search title or author">
     <button id="search_button">Search</button>
+  </div>
+  </p>
+</div>
+<div class="col_text">
+  <p>
+  <div class="ui-widget">
+    <input id="search_author" size="15" placeholder="search author">
+    <button id="but_search_author">Search</button>
   </div>
   </p>
 </div>
