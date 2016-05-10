@@ -71,8 +71,30 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       select(function(d,i){
         if (title.localeCompare(d.title)==0){
           d3.select(this).style("fill", "red");
+          showTooltip(d, this);
         }
       });
+  }
+
+  function showTooltip(d, node){
+    if (d.img != "0")
+      d3.select("#tt-img").attr("src", "https://d.gr-assets.com/books/"+d.img+".jpg");
+    else
+      d3.select("#tt-img").attr("src", "img/nopic.png");
+    d3.select("#tt-title").text(d.title);
+    d3.select("#tt-author").text(d.author);
+    d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
+    d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
+
+    current_circle = d3.select(node);
+    var coords = current_circle.attr("transform").split("translate(")[1].split(",");
+    var ex = parseFloat(coords[0])+48;
+    var ye = parseFloat(coords[1].slice(0,-1))+70; //removes the last (
+    tt.style("top", ye+"px").style("left", ex+"px");
+    //tt.style("top", event.pageY+"px").style("left",event.pageX+"px");
+    tt.style("visibility", "visible");
+    d3.select(node).style("fill", "red");
+    return 0;
   }
 
   $(function() { //for the autocomplete
@@ -83,10 +105,8 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
 
   d3.select("#search_button").on("click",function(d){
     var term = document.getElementById("search").value
-    //console.log(term);
     if (term != "") //todo: do a trim
       return selectSearchBook(term);
-    //return current_circle.style("fill", "red");
   });
   //x.domain([44000, d3.max(data, function(d) { return d.ratings; })]);
   var x_max = d3.max(data, function(d) { return d.ratings; });
@@ -123,23 +143,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       .attr("class", "circle")
       .attr("r", 2.5)
       .attr("transform", transform)
-      .on("click", function(d){
-        if (d.img != "0")
-          d3.select("#tt-img").attr("src", "https://d.gr-assets.com/books/"+d.img+".jpg");
-        else
-          d3.select("#tt-img").attr("src", "img/nopic.png");
-        d3.select("#tt-title").text(d.title);
-        d3.select("#tt-author").text(d.author);
-        d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
-        d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
-        tt.style("top", event.pageY+"px").style("left",event.pageX+"px");
-        tt.style("visibility", "visible");
-        d3.select(this).style("fill", "red");
-        current_circle = d3.select(this);
-        return 0;
-      });
-      //.on("mouseout", function(d){return tt.style("visibility", "hidden");})
-      //.on("click",function(d){d3.select(this).style("fill", "red");});
+      .on("click", function(d){ showTooltip(d, this)});
 
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
     d3.select("#tt-red").on("click",function(d){return current_circle.style("fill", "steelblue");});
