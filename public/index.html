@@ -73,16 +73,28 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
   });   
  
   //marks in red the book (title by author) given in term 
-  function selectSearchBook(term){
+  function selectSearchBook(term, field){
     var title = term.split(" by ")[0];
     svg.selectAll(".circle").
       select(function(d,i){
-        if (title.localeCompare(d.title)==0){
+        if (title.localeCompare(d[field])==0){
           d3.select(this).style("fill", "red");
           showTooltip(d, this);
         }
       });
   }
+
+  //on click of buttons
+  d3.select("#search_button").on("click",function(d){
+    var term = document.getElementById("search").value
+    if (term != "") //todo: do a trim
+      return selectSearchBook(term, "title");
+  });
+  d3.select("#but_search_author").on("click",function(d){
+    var term = document.getElementById("search_author").value
+    if (term != "") //todo: do a trim
+      return selectSearchBook(term, "author");
+  });
 
   function showTooltip(d, node){
     if (d.img != "0")
@@ -99,7 +111,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
     var ex = parseFloat(coords[0])+48;
     var ye = parseFloat(coords[1].slice(0,-1))+70; //removes the last (
     tt.style("top", ye+"px").style("left", ex+"px");
-    //tt.style("top", event.pageY+"px").style("left",event.pageX+"px");
+    //tt.style("visibility", "hidden").transition().delay(1000).style("visibility", "visible");
     tt.style("visibility", "visible");
     d3.select(node).style("fill", "red");
     return 0;
@@ -114,11 +126,6 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
     });
   });
 
-  d3.select("#search_button").on("click",function(d){
-    var term = document.getElementById("search").value
-    if (term != "") //todo: do a trim
-      return selectSearchBook(term);
-  });
   //x.domain([44000, d3.max(data, function(d) { return d.ratings; })]);
   var x_max = d3.max(data, function(d) { return d.ratings; });
 
