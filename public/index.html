@@ -27,8 +27,7 @@
 
 var circle = "",
     titleAuthor = [],
-    authors = [],
-    uauthors = [];
+    authors = [];
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 1400 - margin.left - margin.right,
@@ -61,16 +60,6 @@ var tt = d3.select("#tooltip"),
 
 d3.tsv("bbeverpic.tsv", type, function(error, data) {
   if (error) throw error;
-
-  //copy title and author to array
-  for (var i = 0; i < data.length; i++){
-    titleAuthor[i] = data[i].title + " by " + data[i].author;
-    authors[i] = data[i].author;
-  }
-  //removes duplicates
-  $.each(authors, function(i, el){
-    if($.inArray(el, uauthors) === -1) uauthors.push(el);
-  });   
  
   //marks in red the book (title by author) given in term 
   function selectSearchBook(term, field){
@@ -122,7 +111,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       source: titleAuthor
     });
     $( "#search_author" ).autocomplete({
-      source: uauthors
+      source: authors
     });
   });
 
@@ -165,6 +154,15 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
 
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
     d3.select("#tt-red").on("click",function(d){return current_circle.style("fill", "steelblue");});
+
+  //copy title and author to array
+  for (var i = 0; i < data.length; i++){
+    titleAuthor[i] = data[i].title + " by " + data[i].author;
+    //if($.inArray(data[i].author, authors) === -1)
+    if(authors.indexOf(data[i].author) === -1)
+      authors.push(data[i].author); //only put unique ones
+    //authors[i] = data[i].author;
+  }
 
 });
 
