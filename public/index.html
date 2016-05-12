@@ -141,16 +141,19 @@ function ready(error, data) {
       .style("text-anchor", "end")
       .text("Avg. Rating");
 
+  var clicked_circle = null;
   circle = svg.selectAll(".circle")
       .data(data)
     .enter().append("circle")
       .attr("class", "circle")
       .attr("r", 2.5)
       .attr("transform", transform)
-      .on("click", function(d){ showTooltip(d, this)});
+      .on("click", function(d){ 
+        clicked_circle = d3.select(this);
+        showTooltip(d, this);});
 
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
-    d3.select("#tt-red").on("click",function(d){return d3.select(this).style("fill", "steelblue");});
+    d3.select("#tt-red").on("click",function(d){if (clicked_circle) return clicked_circle.style("fill", "steelblue");});
 
   //copy title and author to array
   for (var i = 0; i < data.length; i++){
