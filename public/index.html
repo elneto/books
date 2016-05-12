@@ -23,6 +23,7 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="//d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
 <script>
 
 var circle = "",
@@ -56,9 +57,12 @@ var svg = d3.select("body").append("svg")
     
 var tt = d3.select("#tooltip");
 
-d3.tsv("bbeverpic.tsv", type, function(error, data) {
+queue().defer(d3.tsv,"bbeverpic.tsv", type)
+  .await(ready);
+
+function ready(error, data) {
   if (error) throw error;
- 
+
   //marks in red the book (title by author) given in term 
   function selectSearchBook(term, field){
     var title = term.split(" by ")[0];
@@ -155,7 +159,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       authors.push(data[i].author); //only put unique ones
   }
 
-});
+};
 
 function type(d) {
   d.ratings = +d.ratings;
