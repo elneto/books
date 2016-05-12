@@ -54,9 +54,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-
-var tt = d3.select("#tooltip"),
-    current_circle = null;
+var tt = d3.select("#tooltip");
 
 d3.tsv("bbeverpic.tsv", type, function(error, data) {
   if (error) throw error;
@@ -95,12 +93,10 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
     d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
     d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
 
-    current_circle = d3.select(node);
-    var coords = current_circle.attr("transform").split("translate(")[1].split(",");
+    var coords = d3.select(node).attr("transform").split("translate(")[1].split(",");
     var ex = parseFloat(coords[0])+48;
     var ye = parseFloat(coords[1].slice(0,-1))+70; //removes the last (
     tt.style("top", ye+"px").style("left", ex+"px");
-    //tt.style("visibility", "hidden").transition().delay(1000).style("visibility", "visible");
     tt.style("visibility", "visible");
     d3.select(node).style("fill", "red");
     return 0;
@@ -115,10 +111,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
     });
   });
 
-  //x.domain([44000, d3.max(data, function(d) { return d.ratings; })]);
-  var x_max = d3.max(data, function(d) { return d.ratings; });
-
-  x.domain([3, x_max]);
+  x.domain([3, d3.max(data, function(d) { return d.ratings; })]);
   y.domain([2.5, 5]);
 
   svg.call(d3.behavior.zoom().y(y).x(x).scaleExtent([1,Infinity]).on("zoom", zoom));
@@ -153,15 +146,13 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       .on("click", function(d){ showTooltip(d, this)});
 
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
-    d3.select("#tt-red").on("click",function(d){return current_circle.style("fill", "steelblue");});
+    d3.select("#tt-red").on("click",function(d){return d3.select(this).style("fill", "steelblue");});
 
   //copy title and author to array
   for (var i = 0; i < data.length; i++){
     titleAuthor[i] = data[i].title + " by " + data[i].author;
-    //if($.inArray(data[i].author, authors) === -1)
     if(authors.indexOf(data[i].author) === -1)
       authors.push(data[i].author); //only put unique ones
-    //authors[i] = data[i].author;
   }
 
 });
