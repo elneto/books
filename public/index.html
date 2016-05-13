@@ -3,7 +3,7 @@
 <title>Best Books Ever</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
-<body>
+<body class="layer">
 
 <!-- A tool tip -->
 <div id="tooltip"> 
@@ -16,7 +16,20 @@
       <a href="" id="tt-url" target="_blank">Read more</a>
       <a href="#" id="tt-red">Unmark</a>
     </div>
+</div>
 
+<!-- A preloader -->
+<img src="img/loading-coffee.gif" alt="loading image..." id="loader" width="80" height="80">
+
+<div id="welcome">
+
+  <p>Loading search autocomplete...</p>
+
+  <p>Click around, zoom in and out in a point</p>
+
+  <p>You can also search for books and authors</p>
+
+  <p>Have fun exploring books!</p>
 </div>
 
 <h1>Best Books Ever</h1>
@@ -74,6 +87,11 @@ function populateAutoComplete(){
       source: authors
     });
   });
+
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("welcome").style.display = "none";
+  $("body").removeClass("layer");
+
 }
 
 d3.tsv("bbeverpic.tsv", type, function(error, data){
