@@ -14,7 +14,7 @@
       <div id="tt-author"></div>
       <div id="tt-ratings"></div>
       <a href="" id="tt-url" target="_blank">Read more</a>
-      <a href="" id="tt-red">Unmark</a>
+      <a href="#" id="tt-red">Unmark</a>
     </div>
 
 </div>
@@ -60,7 +60,6 @@ var tt = d3.select("#tooltip"),
 //copy title and author to array
 function populateAutoComplete(){
   console.log("started populate");
-  //console.log(data_ext);
 
   for (var i = 0; i < data_ext.length; i++){
     titleAuthor[i] = data_ext[i].title + " by " + data_ext[i].author;
@@ -170,6 +169,12 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
     d3.select("#tt-red").on("click",function(d){if (clicked_circle) return clicked_circle.style("fill", "steelblue");});
     console.log("finished tsv");
+  });
+
+  $(function(){ 
+    $('a[href="#"]').click( function(e) {
+      e.preventDefault();
+    });
   });
 
 function type(d) {
