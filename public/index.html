@@ -54,55 +54,19 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-var tt = d3.select("#tooltip");
+var tt = d3.select("#tooltip"),
+    data_ext = [];
 
-d3.tsv("bbeverpic.tsv", type, function(error, data) {
-  if (error) throw error;
- 
-  //marks in red the book (title by author) given in term 
-  function selectSearchBook(term, field){
-    var title = term.split(" by ")[0];
-    svg.selectAll(".circle").
-      select(function(d,i){
-        if (title.localeCompare(d[field])==0){
-          d3.select(this).style("fill", "red");
-          showTooltip(d, this);
-        }
-      });
+//copy title and author to array
+function populateAutoComplete(){
+  for (var i = 0; i < data_ext.length; i++){
+    titleAuthor[i] = data_ext[i].title + " by " + data_ext[i].author;
+    if(authors.indexOf(data_ext[i].author) === -1)
+      authors.push(data_ext[i].author); //only put unique ones
   }
 
-  //on click of buttons
-  d3.select("#search_button").on("click",function(d){
-    var term = document.getElementById("search").value
-    if (term != "") //todo: do a trim
-      return selectSearchBook(term, "title");
-  });
-  d3.select("#but_search_author").on("click",function(d){
-    var term = document.getElementById("search_author").value
-    if (term != "") //todo: do a trim
-      return selectSearchBook(term, "author");
-  });
-
-  function showTooltip(d, node){
-    if (d.img != "0")
-      d3.select("#tt-img").attr("src", "https://d.gr-assets.com/books/"+d.img+".jpg");
-    else
-      d3.select("#tt-img").attr("src", "img/nopic.png");
-    d3.select("#tt-title").text(d.title);
-    d3.select("#tt-author").text(d.author);
-    d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
-    d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
-
-    var coords = d3.select(node).attr("transform").split("translate(")[1].split(",");
-    var ex = parseFloat(coords[0])+48;
-    var ye = parseFloat(coords[1].slice(0,-1))+70; //removes the last (
-    tt.style("top", ye+"px").style("left", ex+"px");
-    tt.style("visibility", "visible");
-    d3.select(node).style("fill", "red");
-    return 0;
-  }
-
-  $(function() { //for the autocomplete
+  //for the autocomplete
+  $(function() { 
     $( "#search" ).autocomplete({
       source: titleAuthor
     });
@@ -110,54 +74,101 @@ d3.tsv("bbeverpic.tsv", type, function(error, data) {
       source: authors
     });
   });
+}
 
-  x.domain([3, d3.max(data, function(d) { return d.ratings; })]);
-  y.domain([2.5, 5]);
+d3.tsv("bbeverpic.tsv", type, function(error, data){
+    if (error) throw error;
+    data_ext = data.slice();
+    setTimeout(populateAutoComplete); //calls it async
 
-  svg.call(d3.behavior.zoom().y(y).x(x).scaleExtent([1,Infinity]).on("zoom", zoom));
+    //marks in red the book (title by author) given in term 
+    function selectSearchBook(term, field){
+      var title = term.split(" by ")[0];
+      svg.selectAll(".circle").
+        select(function(d,i){
+          if (title.localeCompare(d[field])==0){
+            d3.select(this).style("fill", "red");
+            showTooltip(d, this);
+          }
+        });
+    }
 
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
-    .append("text")
-      .attr("x", width)
-      .attr("y", -16)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Ratings");
+    //on click of buttons
+    d3.select("#search_button").on("click",function(d){
+      var term = document.getElementById("search").value
+      if (term != "") //todo: do a trim
+        return selectSearchBook(term, "title");
+    });
+    d3.select("#but_search_author").on("click",function(d){
+      var term = document.getElementById("search_author").value
+      if (term != "") //todo: do a trim
+        return selectSearchBook(term, "author");
+    });
 
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Avg. Rating");
+    function showTooltip(d, node){
+      if (d.img != "0")
+        d3.select("#tt-img").attr("src", "https://d.gr-assets.com/books/"+d.img+".jpg");
+      else
+        d3.select("#tt-img").attr("src", "img/nopic.png");
+      d3.select("#tt-title").text(d.title);
+      d3.select("#tt-author").text(d.author);
+      d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
+      d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
 
-  var clicked_circle = null;
-  circle = svg.selectAll(".circle")
-      .data(data)
-    .enter().append("circle")
-      .attr("class", "circle")
-      .attr("r", 2.5)
-      .attr("transform", transform)
-      .on("click", function(d){ 
-        clicked_circle = d3.select(this);
-        showTooltip(d, this);});
-      
+      var coords = d3.select(node).attr("transform").split("translate(")[1].split(",");
+      var ex = parseFloat(coords[0])+48;
+      var ye = parseFloat(coords[1].slice(0,-1))+70; //removes the last (
+      tt.style("top", ye+"px").style("left", ex+"px");
+      tt.style("visibility", "visible");
+      d3.select(node).style("fill", "red");
+      return 0;
+    }
+
+    x.domain([3, d3.max(data, function(d) { return d.ratings; })]);
+    y.domain([2.5, 5]);
+
+    svg.call(d3.behavior.zoom().y(y).x(x).scaleExtent([1,Infinity]).on("zoom", zoom));
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+      .append("text")
+        .attr("x", width)
+        .attr("y", -16)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Ratings");
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Avg. Rating");
+
+    var clicked_circle = null;
+    circle = svg.selectAll(".circle")
+        .data(data)
+      .enter().append("circle")
+        .attr("class", "circle")
+        .attr("r", 2.5)
+        .attr("transform", transform)
+        .on("click", function(d){ 
+          clicked_circle = d3.select(this);
+          showTooltip(d, this);});
+
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
     d3.select("#tt-red").on("click",function(d){if (clicked_circle) return clicked_circle.style("fill", "steelblue");});
+  });
 
-  //copy title and author to array
-  for (var i = 0; i < data.length; i++){
-    titleAuthor[i] = data[i].title + " by " + data[i].author;
-    if(authors.indexOf(data[i].author) === -1)
-      authors.push(data[i].author); //only put unique ones
-  }
-
+$(function(){ 
+  $('a[href="#"]').click( function(e) {
+    e.preventDefault();
+  });
 });
 
 function type(d) {
