@@ -14,7 +14,7 @@
       <div id="tt-author"></div>
       <div id="tt-ratings"></div>
       <a href="" id="tt-url" target="_blank">Read more</a>
-      <a href="#" id="tt-red">Unmark</a>
+      <a href="" id="tt-red">Unmark</a>
     </div>
 
 </div>
@@ -23,7 +23,6 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="//d3js.org/d3.v3.min.js"></script>
-<script src="http://d3js.org/queue.v1.min.js"></script>
 <script>
 
 var circle = "",
@@ -59,9 +58,9 @@ var tt = d3.select("#tooltip"),
     data_ext = [];
 
 //copy title and author to array
-function populateAutoComplete(callback){
+function populateAutoComplete(){
   console.log("started populate");
-  console.log(data_ext);
+  //console.log(data_ext);
 
   for (var i = 0; i < data_ext.length; i++){
     titleAuthor[i] = data_ext[i].title + " by " + data_ext[i].author;
@@ -80,17 +79,13 @@ function populateAutoComplete(callback){
   });
 
   console.log("finished populate");
-  callback(null);
 }
 
-queue().defer(d3.tsv,"bbeverpic.tsv", type, function(error, data){
+d3.tsv("bbeverpic.tsv", type, function(error, data){
     if (error) throw error;
     console.log("started tsv");
-    //data_ext = data.slice();
-    //data_ext = data;
-    for (var i = 0; i < data_ext.length; i++)
-      data_ext[i] = data[i];
-    //console.log(data_ext);
+    data_ext = data.slice();
+    setTimeout(populateAutoComplete); //calls it async
 
     //marks in red the book (title by author) given in term 
     function selectSearchBook(term, field){
@@ -175,7 +170,7 @@ queue().defer(d3.tsv,"bbeverpic.tsv", type, function(error, data){
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
     d3.select("#tt-red").on("click",function(d){if (clicked_circle) return clicked_circle.style("fill", "steelblue");});
     console.log("finished tsv");
-  }).await(populateAutoComplete);
+  });
 
 function type(d) {
   d.ratings = +d.ratings;
