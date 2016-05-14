@@ -26,7 +26,7 @@
 
 <div id="welcome">
 
-  <p>Loading search autocomplete...</p>
+  <p>Please wait. Loading search autocomplete...</p>
 
   <p>Click around and scroll to zoom in and out in a point</p>
 
@@ -49,9 +49,18 @@
   <div class="ui-widget col-md-5">
     <input id="search_author" size="30" placeholder="search author">
     <button id="but_search_author">Search</button>
+    <button id="clear">Clear</button>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-md-7">
+    &nbsp;
+  </div>
+  <div class="col-md-5">
+    <span id="status"></span>
   </div>
 </div>
-
   <div class="row">
     <p>&nbsp;</p>
     <div class="col-md-12" id="theviz">
@@ -125,14 +134,20 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
 
     //marks in red the book (title by author) given in term 
     function selectSearchBook(term, field){
+      var found = 0;
       var title = term.split(" by ")[0];
       svg.selectAll(".circle").
         select(function(d,i){
           if (title.localeCompare(d[field])==0){
             d3.select(this).style("fill", "red");
+            d3.select(this).transition().attr("r", 10);
+            ++found;
             //showTooltip(d, this);
           }
         });
+      //console.log(found);
+      if (field === "author")
+        $("#status").html("Found <strong>"+found+"</strong> books by " +term);
     }
 
     //on click of buttons
@@ -145,6 +160,9 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
       var term = document.getElementById("search_author").value
       if (term != "") //todo: do a trim
         return selectSearchBook(term, "author");
+    });
+    d3.select("#clear").on("click",function(d){
+      return clear();
     });
 
     function showTooltip(d, node, x, y){
@@ -203,6 +221,13 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
     d3.select("#tt-red").on("click",function(d){if (clicked_circle) return clicked_circle.style("fill", "steelblue");});
   });
+
+function clear(){
+  circle.transition().attr("r", 2.5)
+    .style("fill", "steelblue");
+
+  $("#status").text("");
+}
 
 $(function(){ 
   $('a[href="#"]').click( function(e) {
