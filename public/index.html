@@ -16,7 +16,7 @@
       <div id="tt-title"></div>
       <div id="tt-author"></div>
       <div id="tt-ratings"></div>
-      <a href="" id="tt-url" target="_blank">Read more</a>
+      <a href="" id="tt-url" target="_blank">Read more</a>&nbsp;|&nbsp;
       <a href="#" id="tt-red">Unmark</a>
     </div>
 </div>
@@ -53,6 +53,7 @@
 </div>
 
   <div class="row">
+    <p>&nbsp;</p>
     <div class="col-md-12" id="theviz">
     </div>
   </div>
@@ -129,7 +130,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
         select(function(d,i){
           if (title.localeCompare(d[field])==0){
             d3.select(this).style("fill", "red");
-            showTooltip(d, this);
+            //showTooltip(d, this);
           }
         });
     }
@@ -146,7 +147,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
         return selectSearchBook(term, "author");
     });
 
-    function showTooltip(d, node){
+    function showTooltip(d, node, x, y){
       if (d.img != "0")
         d3.select("#tt-img").attr("src", "https://d.gr-assets.com/books/"+d.img+".jpg");
       else
@@ -155,11 +156,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
       d3.select("#tt-author").text(d.author);
       d3.select("#tt-ratings").text(d.avg_rating + " from " +addCommas(d.ratings)+ " reviews");
       d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
-
-      var coords = d3.select(node).attr("transform").split("translate(")[1].split(",");
-      var ex = parseFloat(coords[0])+296;
-      var ye = parseFloat(coords[1].slice(0,-1))+107; //removes the last (
-      tt.style("top", ye+"px").style("left", ex+"px");
+      tt.style("top", y+"px").style("left", x+"px");
       tt.style("visibility", "visible");
       d3.select(node).style("fill", "red");
       return 0;
@@ -200,7 +197,8 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
         .attr("transform", transform)
         .on("click", function(d){ 
           clicked_circle = d3.select(this);
-          showTooltip(d, this);});
+          showTooltip(d, this, event.pageX, event.pageY);
+        });
 
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
     d3.select("#tt-red").on("click",function(d){if (clicked_circle) return clicked_circle.style("fill", "steelblue");});
@@ -234,9 +232,9 @@ function transform(d) {
 function addCommas(nStr)
 {
   nStr += '';
-  x = nStr.split('.');
-  x1 = x[0];
-  x2 = x.length > 1 ? '.' + x[1] : '';
+  var x = nStr.split('.');
+  var x1 = x[0];
+  var x2 = x.length > 1 ? '.' + x[1] : '';
   var rgx = /(\d+)(\d{3})/;
   while (rgx.test(x1)) {
     x1 = x1.replace(rgx, '$1' + ',' + '$2');
@@ -248,7 +246,7 @@ function addCommas(nStr)
 
   <div class="row">
     <div class="col-md-12">
-      <p>&nbsp;</p>
+    <p>&nbsp;</p>
     <p><strong>Click</strong> to see the book's title and more info.</p>
 
     <p>Use the <strong>scroll</strong> to zoom in and out, <strong>drag</strong> to pan.</p>
