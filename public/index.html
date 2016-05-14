@@ -2,9 +2,12 @@
 <meta charset="utf-8">
 <title>Best Books Ever</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<!-- Bootstrap -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <body class="layer">
 
+<div class="container">
 <!-- A tool tip -->
 <div id="tooltip"> 
     <img src="img/close.gif" id="closett">
@@ -25,14 +28,34 @@
 
   <p>Loading search autocomplete...</p>
 
-  <p>Click around, zoom in and out in a point</p>
+  <p>Click around and scroll to zoom in and out in a point</p>
 
   <p>You can also search for books and authors</p>
 
   <p>Have fun exploring books!</p>
 </div>
 
-<h1>Best Books Ever</h1>
+<h2>Best Books Ever</h2>
+
+<div class="row">
+  <div class="col-md-3">
+    More than 40,000 books to explore
+  </div>
+  <div class="ui-widget col-md-4">
+    <input id="search" size="45" placeholder="search title or author">
+    <button id="search_button">Search</button>
+  </div>
+
+  <div class="ui-widget col-md-5">
+    <input id="search_author" size="30" placeholder="search author">
+    <button id="but_search_author">Search</button>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-md-12" id="theviz">
+    </div>
+  </div>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="//d3js.org/d3.v3.min.js"></script>
@@ -43,8 +66,8 @@ var circle = "",
     authors = [];
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 1400 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    width = 1000 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 
 var x = d3.scale.log()
     .range([0, width]);
@@ -61,7 +84,7 @@ var yAxis = d3.svg.axis()
     .orient("left")
     .ticks(5);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#theviz").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -134,8 +157,8 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
       d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
 
       var coords = d3.select(node).attr("transform").split("translate(")[1].split(",");
-      var ex = parseFloat(coords[0])+48;
-      var ye = parseFloat(coords[1].slice(0,-1))+70; //removes the last (
+      var ex = parseFloat(coords[0])+296;
+      var ye = parseFloat(coords[1].slice(0,-1))+107; //removes the last (
       tt.style("top", ye+"px").style("left", ex+"px");
       tt.style("visibility", "visible");
       d3.select(node).style("fill", "red");
@@ -210,33 +233,20 @@ function transform(d) {
 
 </script>
 
-<div class="col_text">
-<p><strong>Click</strong> to see the book's title and more info.</p>
+  <div class="row">
+    <div class="col-md-12">
+      <p>&nbsp;</p>
+    <p><strong>Click</strong> to see the book's title and more info.</p>
 
-<p>Use the <strong>scroll</strong> to zoom in and out, <strong>drag</strong> to pan.</p>
+    <p>Use the <strong>scroll</strong> to zoom in and out, <strong>drag</strong> to pan.</p>
 
-<p>The X axis is the number of reviews. The Y is the average rating.</p>
+    <p>The X axis is the number of reviews. The Y is the average rating.</p>
 
-<p>Gets all the 43,343 greatest books from this <a href="https://www.goodreads.com/list/show/1.Best_Books_Ever">goodreads list</a> and visualize them in a zoomable bubble chart.</p>
+    <p>Gets all the 43,343 greatest books from this <a href="https://www.goodreads.com/list/show/1.Best_Books_Ever">goodreads list</a> and visualize them in a zoomable bubble chart.</p>
 
-<p>Source code: <a href="https://github.com/elneto/books">https://github.com/elneto/books</a></p>
-</div>
-<div class="col_text">
-  <p>
-  <div class="ui-widget">
-    <input id="search" size="40" placeholder="search title or author">
-    <button id="search_button">Search</button>
+    <p>Source code: <a href="https://github.com/elneto/books">https://github.com/elneto/books</a></p>
+    </div>
   </div>
-  </p>
-</div>
-<div class="col_text">
-  <p>
-  <div class="ui-widget">
-    <input id="search_author" size="15" placeholder="search author">
-    <button id="but_search_author">Search</button>
-  </div>
-  </p>
-</div>
-
 </body>
+</div>
 </html>

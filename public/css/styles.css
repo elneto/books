@@ -1,12 +1,13 @@
 
 body{
   font-family: "Merriweather", "Georgia", serif;
-  font-size: 10px;
+  font-size: 14px;
   background: 
 }
 
-p{
-  font-size: 1.5em; 
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-size: 0.8em;
+    font-family: "Merriweather", "Georgia", serif;
 }
 
 .layer {
@@ -37,11 +38,11 @@ p{
 
 #welcome {
   position: absolute;
-  left: 21%;
+  left: 39%;
   top: 50%;
   z-index: 1;
   color: white;
-  font-size: 1.5em;
+  font-size: 1.3em;
   }
 
 @-webkit-keyframes spin {
