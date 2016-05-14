@@ -153,7 +153,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
         d3.select("#tt-img").attr("src", "img/nopic.png");
       d3.select("#tt-title").text(d.title);
       d3.select("#tt-author").text(d.author);
-      d3.select("#tt-ratings").text(d.avg_rating + " from " +d.ratings+ " reviews");
+      d3.select("#tt-ratings").text(d.avg_rating + " from " +addCommas(d.ratings)+ " reviews");
       d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
 
       var coords = d3.select(node).attr("transform").split("translate(")[1].split(",");
@@ -229,6 +229,19 @@ function zoom() {
 
 function transform(d) {
   return "translate(" + x(d.ratings) + "," + y(d.avg_rating) + ")"; 
+}
+
+function addCommas(nStr)
+{
+  nStr += '';
+  x = nStr.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';
+  var rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  }
+  return x1 + x2;
 }
 
 </script>
