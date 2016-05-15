@@ -1,5 +1,5 @@
 import csv
-with open('bbeverpic.tsv', 'rU') as csvfile:
+with open('../public/bbeverpic.tsv', 'rU') as csvfile:
 	spamreader = csv.reader(csvfile, dialect=csv.excel_tab)
 	prev_row = ''
 	prev_rating = ''
