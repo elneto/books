@@ -15,5 +15,8 @@
     "url": "https://github.com/elneto/books/issues"
   },
   "homepage": "https://github.com/elneto/books#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "fast-csv": "^2.0.0"
+  }
 }
