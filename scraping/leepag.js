@@ -7,7 +7,7 @@ var fs = require("fs"),
 
 var histo = [], histoDetail = [], writtenLines=0;
 //console.log(arrfile.getArr);
-var mintime = 0, maxtime = 9335500; //up to 9999000 2.5 hrs to not flood of requests
+var mintime = 0, maxtime = 19335500; //up to 9999000 2.5 hrs to not flood of requests
 // Returns a random number between min (inclusive) and max (exclusive)
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
