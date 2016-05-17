@@ -5,6 +5,7 @@ var fs = require("fs"),
 		request = require("request"),
 	  cheerio = require("cheerio");
 
+var histo = [], histoDetail = [], writtenLines=0;
 //console.log(arrfile.getArr);
 var mintime = 0, maxtime = 4335500; //up to 9999000 2.5 hrs to not flood of requests
 // Returns a random number between min (inclusive) and max (exclusive)
@@ -12,13 +13,37 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-var stream = fs.createReadStream("bbeverpic.tsv");
+var stream = fs.createReadStream("bbeverpic.tsv"); //to debug or test
 
 //writes header
 line = "title\tauthor\tavg_rating\tratings\timg\turl\tpages\n";
 fs.appendFile('bbeverpicsPages.tsv', line, function (err) {
   if (err){ console.error("err writing header in file"); return err;}
 });
+
+var wstream = fs.createWriteStream('histo.csv', {flags:'w'});
+
+wstream.on('error', function(err) {
+  console.log("ERROR on writestream:" + err);
+  throw err;
+
+});
+
+function initHisto(){
+  for (var i=0; i<= Math.round(maxtime/1000/60); i++)
+    histo[i]=0;
+}
+
+function writeHistoLine(element, index){
+  wstream.write(index+","+element+"\n");
+}
+
+function writeHisto(){
+  wstream.end();
+  wstream = fs.createWriteStream('histo.csv', {flags:'w'});
+  histo.forEach(writeHistoLine);
+  //wstream.end();
+}
 
 function writePages(data, url){
 	request(url, function (error, response, body) {
@@ -36,6 +61,9 @@ function writePages(data, url){
             if (err){ console.error("err writing in file"); return err;}
             maxtime -= 100; //reduces wait
             console.log("****** maxtime: " + maxtime/1000/60 + " mins");
+            --histo[histoDetail[data.title]]; //removes from histo
+            console.log(++writtenLines + " written lines")
+            writeHisto();
           });
         });
   	}
@@ -53,11 +81,17 @@ var csvStream = csv({headers:true, delimiter:'\t'})
          var url = 'http://www.goodreads.com/book/show/'+data.url;
          //visit that URL
          var rand=getRandomArbitrary(mintime,maxtime);
-         console.log("Visiting " + data.title+" in " + rand/1000/60 + " mins ");
+         var minute = Math.round(rand/1000/60);
+         ++histo[minute]; //increases histogram bar
+         histoDetail[data.title] = minute; //to remove later
+         //console.log(histoDetail);
+         console.log("Visiting " + data.title+" in " + minute + " mins ");
+         writeHisto();
          setTimeout(writePages, rand, data, url);
     })
     .on("end", function(){
          console.log("done");
     });
- 
+
+initHisto();
 stream.pipe(csvStream);
