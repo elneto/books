@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Download page book</title>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/data.js"></script>
+
+    <script>
+    	$(function () {
+    		$.get('histo.csv', function(csv) {
+			    $('#container').highcharts({
+			    		chart: {
+	            	type: 'column'
+			        },
+			        data: {
+            		csv: csv
+        			},
+			        title: {
+			            text: 'Pages to download from goodreads'
+			        },
+			    		plotOptions: {
+							    column: {
+							        pointPadding: 0,
+							        borderWidth: 0,
+							        groupPadding: 0,
+							        shadow: false
+							    }
+							},
+			        xAxis: {
+			            minPadding: 0.05,
+			            maxPadding: 0.05
+			        },
+			    });
+			 });
+		});
+    </script>
+  </head>
+  <body>
+  	<div id="container" style="height: 400px"></div>
+    <!-- page content -->
+  </body>
+</html>
+
+
+
