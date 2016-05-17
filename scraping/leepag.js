@@ -7,7 +7,7 @@ var fs = require("fs"),
 
 var histo = [], histoDetail = [], writtenLines=0;
 //console.log(arrfile.getArr);
-var mintime = 0, maxtime = 4335500; //up to 9999000 2.5 hrs to not flood of requests
+var mintime = 0, maxtime = 8335500; //up to 9999000 2.5 hrs to not flood of requests
 // Returns a random number between min (inclusive) and max (exclusive)
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -69,7 +69,11 @@ function writePages(data, url){
   	}
 		else{
 			var rand=getRandomArbitrary(mintime,maxtime);
+      var minute = Math.round(rand/1000/60);
+      ++histo[minute]; //increases histogram bar
+      histoDetail[data.title] = minute; //to remove later
 			console.error('******** Retrying '+data.title+' in '+rand/1000/60+ ' mins');
+      writeHisto();
       setTimeout(writePages, rand, data, url);
 		}
 	});
