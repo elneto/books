@@ -7,7 +7,7 @@ var fs = require("fs"),
 
 var histo = [], histoDetail = [], writtenLines=0;
 //console.log(arrfile.getArr);
-var mintime = 0, maxtime = 19335500; //up to 9999000 2.5 hrs to not flood of requests
+var mintime = 15000, maxtime = 19335500; //up to 9999000 2.5 hrs to not flood of requests
 // Returns a random number between min (inclusive) and max (exclusive)
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -21,13 +21,7 @@ fs.appendFile('bbeverpicsPages.tsv', line, function (err) {
   if (err){ console.error("err writing header in file"); return err;}
 });
 
-var wstream = fs.createWriteStream('histo.csv', {flags:'w'});
-
-wstream.on('error', function(err) {
-  console.log("ERROR on writestream:" + err);
-  throw err;
-
-});
+var wfile = null;
 
 function initHisto(){
   for (var i=0; i<= Math.round(maxtime/1000/60); i++)
@@ -35,12 +29,16 @@ function initHisto(){
 }
 
 function writeHistoLine(element, index){
-  wstream.write(index+","+element+"\n");
+  //wstream.write(index+","+element+"\n");
+  fs.appendFile('histo.csv', index+","+element+"\n", function (err) {
+    if (err){ console.error("err writing in histo.csv"); return err;}
+  });
 }
 
 function writeHisto(){
-  wstream.end();
-  wstream = fs.createWriteStream('histo.csv', {flags:'w'});
+  // wstream.end();
+  // wstream = fs.createWriteStream('histo.csv');
+  fs.truncate('histo.csv', 0, function(){console.log('deleted histo.csv')})
   histo.forEach(writeHistoLine);
   //wstream.end();
 }
