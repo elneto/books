@@ -1,6 +1,6 @@
-with open('bbeverpic10.tsv', 'rU') as f:
+with open('bbeverpic.tsv', 'rU') as f:
 	content = f.readlines()
-with open('bbeverpic10pages.tsv', 'rU') as f_page:
+with open('bbeverpicsPages.tsv', 'rU') as f_page:
 	content_page = f_page.readlines()
 
 #trims list
