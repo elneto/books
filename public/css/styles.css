@@ -65,6 +65,8 @@ body{
 
 .circle {
   fill: steelblue;
+  stroke:gray;
+  fill-opacity:0.3;
   /*stroke:white;*/
   cursor: pointer;
 }
@@ -119,7 +121,7 @@ img#closett{
   font-weight: bold;
 }
 
-#tt-author, #tt-ratings{
+#tt-author, #tt-ratings, #tt-pages{
   clear: left;
 }
 

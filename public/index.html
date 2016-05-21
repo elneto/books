@@ -14,7 +14,7 @@
     <img id="tt-img" src="https://d.gr-assets.com/books/1345060082s/19380.jpg"> 
     <div id="tt-text">
       <div id="tt-title"></div>
-      <div id="tt-author"></div>
+      <div id="tt-author"></div><small><div id="tt-pages"></div></small>
       <div id="tt-ratings"></div>
       <a href="" id="tt-url" target="_blank">Read more</a>&nbsp;|&nbsp;
       <a href="#" id="tt-red">Unmark</a>
@@ -85,6 +85,9 @@ var x = d3.scale.log()
 var y = d3.scale.linear()
     .range([height, 0]);
 
+var radius = d3.scale.linear()
+    .range([2, 100]);
+
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
@@ -127,7 +130,7 @@ function populateAutoComplete(){
 
 }
 
-d3.tsv("bbeverpic.tsv", type, function(error, data){
+d3.tsv("bbeverpicsTotalPages.tsv", type, function(error, data){
     if (error) throw error;
     data_ext = data.slice();
     setTimeout(populateAutoComplete); //calls it async
@@ -140,9 +143,12 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
         select(function(d,i){
           if (title.localeCompare(d[field])==0){
             d3.select(this).style("fill", "red");
-            d3.select(this).transition().attr("r", 10);
+            var oldR = d3.select(this).attr("r");
+            //console.log(oldR);
+            d3.select(this).attr("r", 20)
+                          .transition().delay(750).attr("r", oldR);
             ++found;
-            //showTooltip(d, this);
+            showTooltip(d, this, 100,220);
           }
         });
       //console.log(found);
@@ -172,19 +178,22 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
         d3.select("#tt-img").attr("src", "img/nopic.png");
       d3.select("#tt-title").text(d.title);
       d3.select("#tt-author").text(d.author);
+      d3.select("#tt-pages").text(d.pages+" pages");
       d3.select("#tt-ratings").text(d.avg_rating + " from " +addCommas(d.ratings)+ " reviews");
       d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
       tt.style("top", y+"px").style("left", x+"px");
       tt.style("visibility", "visible");
-      d3.select(node).style("fill", "red");
+      d3.select(node).style("fill", "green");
       return 0;
     }
 
     x.domain([3, d3.max(data, function(d) { return d.ratings; })]);
     y.domain([2.5, 5]);
+    radius.domain([0,d3.max(data, function(d) { return d.pages; })]);
 
     svg.call(d3.behavior.zoom().y(y).x(x).scaleExtent([1,Infinity]).on("zoom", zoom));
 
+    //the axes
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
@@ -211,7 +220,9 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
         .data(data)
       .enter().append("circle")
         .attr("class", "circle")
-        .attr("r", 2.5)
+        .attr("r", function(d){
+          return radius(d.pages);
+        })
         .attr("transform", transform)
         .on("click", function(d){ 
           clicked_circle = d3.select(this);
@@ -223,8 +234,7 @@ d3.tsv("bbeverpic.tsv", type, function(error, data){
   });
 
 function clear(){
-  circle.transition().attr("r", 2.5)
-    .style("fill", "steelblue");
+  circle.transition().style("fill", "steelblue");
 
   $("#status").text("");
 }
