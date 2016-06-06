@@ -231,7 +231,13 @@ d3.tsv("bbeverpicsTotalPages-2k.tsv", type, function(error, data){
         });
 
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
-    d3.select("#tt-red").on("click",function(d){if (clicked_circle) clicked_circle.remove();});
+    d3.select("#tt-red").on("click",function(d){
+      if (clicked_circle) 
+        {
+          clicked_circle.remove();
+          tt.style("visibility", "hidden"); //closes the hover
+        }
+    });
   });
 
 function clear(){
