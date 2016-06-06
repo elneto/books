@@ -86,8 +86,8 @@ var x = d3.scale.log()
 var y = d3.scale.linear()
     .range([height, 0]);
 
-var radius = d3.scale.linear()
-    .range([2, 100]);
+var radius = d3.scale.sqrt()
+    .range([0.5, 50]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -188,7 +188,7 @@ d3.tsv("bbeverpicsTotalPages.tsv", type, function(error, data){
       return 0;
     }
 
-    x.domain([3, d3.max(data, function(d) { return d.ratings; })]);
+    x.domain([1, d3.max(data, function(d) { return d.ratings; })]);
     y.domain([2.5, 5]);
     radius.domain([0,d3.max(data, function(d) { return d.pages; })]);
 
