@@ -40,7 +40,7 @@
 <div class="row">
   <div class="col-md-3">
     More than 40,000 books to explore <br>
-    <a href="index.html">Order by number of pages</a>
+    <a href="index.html">Order by popularity</a>
   </div>
   <div class="ui-widget col-md-4">
     <input id="search" size="45" placeholder="search title or author">
@@ -87,7 +87,7 @@ var y = d3.scale.linear()
     .range([height, 0]);
 
 var radius = d3.scale.linear()
-    .range([2, 100]);
+    .range([2.5, 110]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -188,9 +188,9 @@ d3.tsv("bbeverpicsTotalPages.tsv", type, function(error, data){
       return 0;
     }
 
-    x.domain([3, d3.max(data, function(d) { return d.ratings; })]);
+    x.domain([1, d3.max(data, function(d) { return d.pages; })]);
     y.domain([2.5, 5]);
-    radius.domain([0,d3.max(data, function(d) { return d.pages; })]);
+    radius.domain([1,d3.max(data, function(d) { return d.ratings; })]);
 
     svg.call(d3.behavior.zoom().y(y).x(x).scaleExtent([1,Infinity]).on("zoom", zoom));
 
@@ -204,7 +204,7 @@ d3.tsv("bbeverpicsTotalPages.tsv", type, function(error, data){
         .attr("y", -16)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Ratings");
+        .text("Number of pages");
 
     svg.append("g")
         .attr("class", "y axis")
@@ -222,7 +222,7 @@ d3.tsv("bbeverpicsTotalPages.tsv", type, function(error, data){
       .enter().append("circle")
         .attr("class", "circle")
         .attr("r", function(d){
-          return radius(d.pages);
+          return radius(d.ratings);
         })
         .attr("transform", transform)
         .on("click", function(d){ 
@@ -239,7 +239,7 @@ function clear(){
   circle
     .style("fill", "steelblue")
     .attr("r", function(d){
-          return radius(d.pages);
+          return radius(d.ratings);
         });
 
   $("#status").text("");
@@ -253,12 +253,15 @@ $(function(){
 
 function type(d) {
   d.ratings = +d.ratings;
+  d.pages = +d.pages;
   d.avg_rating = +d.avg_rating;
   //to avoid the log(0) that is NaN
   if (d.ratings == 0)
-    d.ratings = 0.1;
+    d.ratings = 1;
   if (d.avg_rating == 0)
     d.avg_rating = 0.1;
+  if (d.pages <= 0)
+    d.pages = 1;
   return d;
 }
 
@@ -267,7 +270,7 @@ function zoom() {
 }
 
 function transform(d) {
-  return "translate(" + x(d.ratings) + "," + y(d.avg_rating) + ")"; 
+  return "translate(" + x(d.pages) + "," + y(d.avg_rating) + ")"; 
 }
 
 function addCommas(nStr)
@@ -292,7 +295,7 @@ function addCommas(nStr)
 
     <p>Use the <strong>scroll</strong> to zoom in and out, <strong>drag</strong> to pan.</p>
 
-    <p>The X axis indicates is the number of reviews. The Y is the average rating. The size indicates the number of pages.</p>
+    <p>The X axis is the number of pages. The Y is the average rating. The size of the circle indicates the number of reviews of the book.</p>
 
     <p>Gets all the 43,343 greatest books from this <a href="https://www.goodreads.com/list/show/1.Best_Books_Ever">goodreads list</a> and visualize them in a zoomable bubble chart.</p>
 
