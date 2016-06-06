@@ -143,10 +143,10 @@ d3.tsv("bbeverpicsTotalPages.tsv", type, function(error, data){
         select(function(d,i){
           if (title.localeCompare(d[field])==0){
             d3.select(this).style("fill", "red");
-            var oldR = d3.select(this).attr("r");
+            //var oldR = d3.select(this).attr("r");
             //console.log(oldR);
-            d3.select(this).attr("r", 20)
-                          .transition().delay(750).attr("r", oldR);
+
+            d3.select(this).transition().delay(750).attr("r", 35);
             ++found;
             showTooltip(d, this, 100,220);
           }
@@ -183,7 +183,7 @@ d3.tsv("bbeverpicsTotalPages.tsv", type, function(error, data){
       d3.select("#tt-url").attr("href", "https://www.goodreads.com/book/show/"+d.url);
       tt.style("top", y+"px").style("left", x+"px");
       tt.style("visibility", "visible");
-      d3.select(node).style("fill", "green");
+      d3.select(node).style("fill", "red");
       return 0;
     }
 
@@ -234,7 +234,12 @@ d3.tsv("bbeverpicsTotalPages.tsv", type, function(error, data){
   });
 
 function clear(){
-  circle.transition().style("fill", "steelblue");
+  //circle.transition().style("fill", "steelblue");
+  circle
+    .style("fill", "steelblue")
+    .attr("r", function(d){
+          return radius(d.pages);
+        });
 
   $("#status").text("");
 }
