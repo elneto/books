@@ -17,7 +17,7 @@
       <div id="tt-author"></div><small><div id="tt-pages"></div></small>
       <div id="tt-ratings"></div>
       <a href="" id="tt-url" target="_blank">Read more</a>&nbsp;|&nbsp;
-      <a href="#" id="tt-red">Unmark</a>
+      <a href="#" id="tt-red">Remove</a>
     </div>
 </div>
 
@@ -230,7 +230,7 @@ d3.tsv("bbeverpicsTotalPages.tsv", type, function(error, data){
         });
 
     d3.select("#closett").on("click",function(d){return tt.style("visibility", "hidden");});
-    d3.select("#tt-red").on("click",function(d){if (clicked_circle) return clicked_circle.style("fill", "steelblue");});
+    d3.select("#tt-red").on("click",function(d){if (clicked_circle) clicked_circle.remove();});
   });
 
 function clear(){
